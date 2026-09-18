@@ -25,3 +25,5 @@
 
 ФИО: Захаров Артём
 Группа: ЭФБО-14-25
+
+ссылка на проект - https://shadowboyyy.github.io/kr1-html-css-shop/
