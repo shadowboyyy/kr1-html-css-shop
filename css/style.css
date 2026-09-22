@@ -205,7 +205,7 @@ footer {
   Подсветка ошибочных полей.
   Атрибут aria-invalid будет добавляться через JavaScript.
 */
-[aria-invalid="true"] {
+.form-field [aria-invalid="true"] {
   border-color: #b00020;
 }
 
