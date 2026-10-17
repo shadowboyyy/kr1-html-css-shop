@@ -9,9 +9,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Учебный интернет-магазин">
   <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-  <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
+  <meta property="og:image" content="https://shadowboyyy.github.io/kr1-html-css-shop/images/tovar1.jpeg">
 </head>
-<body>
+<body id="top">
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -19,7 +19,9 @@
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
@@ -40,13 +42,12 @@
       <h1 class="section__title">Каталог товаров</h1>
       <p>
         На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        Фильтры представлены как статический макет и пока не изменяют список товаров.
       </p>
     </section>
 
-    <section class="section">
-      <section class="catalog-layout">
+    <div class="section">
+      <div class="catalog-layout">
         <aside class="catalog-filters">
           <h2 class="catalog-filters__title">Фильтры</h2>
 
@@ -80,7 +81,7 @@
               <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
             </fieldset>
 
-            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--primary" type="submit" disabled>Применить</button>
           </form>
         </aside>
 
@@ -89,11 +90,12 @@
 
           <div class="products-grid">
             <article class="product-card product-card--featured">
+      <span class="product-card__badge">Хит</span>
               <h3 class="product-card__title">Товар 1</h3>
               <img class="product-card__image" src="images/tovar1.jpeg" alt="Изображение товара 1" width="300" height="300">
               <p class="product-card__description">Краткое описание учебного товара.</p>
               <p class="product-card__price">Цена: 1000 руб.</p>
-              <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
+              <a class="button button--primary product-card__button" href="product.html#product-1">Подробнее</a>
             </article>
 
             <article class="product-card">
@@ -101,7 +103,7 @@
               <img class="product-card__image" src="images/tovar2.jpeg" alt="Изображение товара 2" width="300" height="300">
               <p class="product-card__description">Краткое описание учебного товара.</p>
               <p class="product-card__price">Цена: 1500 руб.</p>
-              <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
+              <a class="button button--primary product-card__button" href="product.html#product-2">Подробнее</a>
             </article>
 
             <article class="product-card">
@@ -109,17 +111,18 @@
               <img class="product-card__image" src="images/tovar3.jpeg" alt="Изображение товара 3" width="300" height="300">
               <p class="product-card__description">Краткое описание учебного товара.</p>
               <p class="product-card__price">Цена: 2000 руб.</p>
-              <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
+              <a class="button button--primary product-card__button" href="product.html#product-3">Подробнее</a>
             </article>
           </div>
         </section>
-      </section>
-    </section>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
     <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
     <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
+  <a class="button button--primary back-to-top" href="#top">Наверх</a>
 </body>
 </html>

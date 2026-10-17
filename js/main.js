@@ -2,7 +2,7 @@
 const orderDialog = document.getElementById('order-dialog');
 
 // Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
+const orderButtons = document.querySelectorAll('button[data-product]');
 
 // Получаем кнопку закрытия модального окна.
 const closeDialogButton = document.getElementById('close-order-dialog');
@@ -19,15 +19,20 @@ orderButtons.forEach((button) => {
     // Записываем название товара в скрытое поле формы.
     selectedProductInput.value = productName;
 
+    // Убираем сообщение о предыдущей заявке.
+    successMessage.hidden = true;
+
     // Открываем модальное окно.
     orderDialog.showModal();
   });
 });
 
 // Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
+if (closeDialogButton && orderDialog) {
+  closeDialogButton.addEventListener('click', () => {
+    orderDialog.close();
+  });
+}
 
 // Получаем форму заявки.
 const orderForm = document.getElementById('order-form');
@@ -40,6 +45,7 @@ orderForm.addEventListener('submit', (event) => {
   // Отменяем стандартную отправку формы,
   // потому что backend пока не подключён.
   event.preventDefault();
+  successMessage.hidden = true;
 
   // Сбрасываем предыдущие признаки ошибок.
   const formElements = Array.from(orderForm.elements);
@@ -70,5 +76,7 @@ orderForm.addEventListener('submit', (event) => {
   orderForm.reset();
 
   // Закрываем модальное окно.
-  orderDialog.close();
+  if (orderDialog) {
+    orderDialog.close();
+  }
 });
