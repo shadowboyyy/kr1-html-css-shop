@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
+  <title id="title">Механическая клавиатура</title>
+  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
+  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="25" y="91" width="250" height="122" rx="13" fill="#eef5ff"/>
+    <path d="M43 115h214M43 141h214M43 167h214M64 103v78m28-78v78m28-78v78m28-78v78m28-78v78m28-78v78m28-78v78" stroke-width="4"/>
+    <rect x="85" y="184" width="130" height="12" rx="4" fill="#0057b8" stroke="none"/>
+  </g>
+</svg>

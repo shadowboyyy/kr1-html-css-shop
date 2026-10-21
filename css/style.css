@@ -272,7 +272,7 @@ a:focus-visible {
 
 .product-card__title {
   margin: 0;
-  padding-right: 60px;
+  padding-right: 110px;
   color: var(--color-text);
 }
 
@@ -305,15 +305,75 @@ a:focus-visible {
   top: var(--space-sm);
   right: var(--space-sm);
   padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--color-white);
   background-color: var(--color-danger);
   border-radius: var(--radius-sm);
+}
+
+.product-card__badge--new {
+  background-color: var(--color-success);
+}
+
+.product-card__badge--sale {
+  background-color: var(--color-primary);
 }
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
+}
+
+/* Отзывы и частые вопросы */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.review-card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.review-card__name,
+.review-card__text {
+  margin: 0;
+}
+
+.review-card__rating {
+  margin: var(--space-sm) 0;
+  color: var(--color-primary);
+}
+
+.faq-item {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.faq-item__question {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq-item__question:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.faq-item[open] {
+  background-color: var(--color-surface-accent);
+}
+
+.faq-item__answer {
+  margin: var(--space-sm) 0 0;
 }
 
 /* Форма и модальное окно */
@@ -408,6 +468,11 @@ a:focus-visible {
 
 .catalog-filters {
   grid-area: filters;
+  position: sticky;
+  top: 180px;
+  align-self: start;
+  max-height: calc(100vh - 196px);
+  overflow-y: auto;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -508,4 +573,31 @@ a:focus-visible {
   right: var(--space-lg);
   bottom: var(--space-lg);
   z-index: 100;
+}
+
+/* На небольших экранах фильтры идут перед товарами. */
+
+@media (max-width: 1100px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .catalog-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: "filters" "products";
+  }
+
+  .catalog-filters {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-grid,
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 }

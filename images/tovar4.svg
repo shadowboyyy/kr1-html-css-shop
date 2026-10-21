@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
+  <title id="title">Беспроводной геймпад</title>
+  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
+  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M94 105h112c20 0 33 17 38 41l11 51c4 20-18 29-31 15l-27-31H103l-27 31c-13 14-35 5-31-15l11-51c5-24 18-41 38-41Z" fill="#eef5ff"/>
+    <path d="M89 127v34m-17-17h34"/><circle cx="199" cy="134" r="6" fill="#0057b8"/><circle cx="218" cy="153" r="6" fill="#0057b8"/><circle cx="126" cy="169" r="12"/><circle cx="174" cy="169" r="12"/>
+  </g>
+</svg>

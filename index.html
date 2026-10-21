@@ -43,6 +43,8 @@
         Посмотрите каталог, изучите характеристики товаров и оформите заявку.
       </p>
       <a class="button button--primary" href="#popular">Перейти к товарам</a>
+      <a class="button button--secondary" href="#reviews">Отзывы</a>
+      <a class="button button--secondary" href="#faq">FAQ</a>
     </section>
 
     <section class="section" id="advantages">
@@ -58,43 +60,152 @@
     <section class="section" id="popular">
   <h2 class="section__title">Популярные товары</h2>
 
-  <div class="products-grid">
-<article class="product-card product-card--featured">
-      <span class="product-card__badge">Хит</span>
-<img class="product-card__image" src="images/tovar1.jpeg" alt="Изображение товара 1" width="300" height="300">
-      <h3 class="product-card__title">Товар 1</h3>
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 1000 руб.</p>
-      <a class="product-card__link" href="product.html#product-1">Подробнее</a>
-      <button class="button button--primary product-card__button" type="button" data-product="Товар 1">
-        Заказать
-      </button>
-    </article>
+      <div class="products-grid">
+        <article class="product-card product-card--featured">
+          <span class="product-card__badge">ХИТ</span>
+          <h3 class="product-card__title">Товар 1</h3>
+          <img class="product-card__image" src="images/tovar1.jpeg" alt="Sony PlayStation 5 Pro" width="300" height="300">
+          <p class="product-card__description">Sony PlayStation 5 Pro — это обновленная и самая мощная версия стационарной игровой консоли поколения, выпущенная для повышенной производительности в играх</p>
+          <p class="product-card__price">Цена: 1000 руб.</p>
+          <a class="product-card__link" href="product.html#product-1">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 1">Заказать</button>
+        </article>
 
-    <article class="product-card">
-<h3 class="product-card__title">Товар 2</h3>
-<img class="product-card__image" src="images/tovar2.jpeg" alt="Изображение товара 2" width="300" height="300">
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 1500 руб.</p>
-      <a class="product-card__link" href="product.html#product-2">Подробнее</a>
-      <button class="button button--primary product-card__button" type="button" data-product="Товар 2">
-        Заказать
-      </button>
-    </article>
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
+          <h3 class="product-card__title">Товар 2</h3>
+          <img class="product-card__image" src="images/tovar2.jpeg" alt="Раф Симонс" width="300" height="300">
+          <p class="product-card__description">Раф Симонс (Raf Simons, род. 12 января 1968 года) — знаменитый бельгийский модный дизайнер, один из самых влиятельных новаторов в современной индустрии одежды, который пришел в моду из промышленного дизайна и дизайна мебели.</p>
+          <p class="product-card__price">Цена: 1500 руб.</p>
+          <a class="product-card__link" href="product.html#product-2">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 2">Заказать</button>
+        </article>
 
-    <article class="product-card">
-<h3 class="product-card__title">Товар 3</h3>
-<img class="product-card__image" src="images/tovar3.jpeg" alt="Изображение товара 3" width="300" height="300">
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 2000 руб.</p>
-      <a class="product-card__link" href="product.html#product-3">Подробнее</a>
-      <button class="button button--primary product-card__button" type="button" data-product="Товар 3">
-        Заказать
-      </button>
-    </article>
-  </div>
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
+          <h3 class="product-card__title">Товар 3</h3>
+          <img class="product-card__image" src="images/tovar3.jpeg" alt="Grand Theft Auto VI" width="300" height="300">
+          <p class="product-card__description">Grand Theft Auto VI (GTA 6) — это ожидаемая компьютерная игра в жанре action-adventure с открытым миром от студии Rockstar Games, выход которой запланирован на 19 ноября 2026 года для консолей PlayStation 5 и Xbox Series X/S</p>
+          <p class="product-card__price">Цена: 2000 руб.</p>
+          <a class="product-card__link" href="product.html#product-3">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 3">Заказать</button>
+        </article>
+
+        <article class="product-card product-card--featured">
+          <span class="product-card__badge">ХИТ</span>
+          <h3 class="product-card__title">Товар 4</h3>
+          <img class="product-card__image" src="images/tovar4.svg" alt="Беспроводной геймпад" width="300" height="300">
+          <p class="product-card__description">Беспроводной геймпад — это игровой контроллер, который позволяет управлять персонажем и взаимодействовать с игровым миром без использования клавиатуры. На корпусе расположены кнопки, два стика и крестовина, а удобная форма помогает держать устройство в руках во время прохождения игр.</p>
+          <p class="product-card__price">Цена: 2500 руб.</p>
+          <a class="product-card__link" href="product.html#product-4">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 4">Заказать</button>
+        </article>
+
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
+          <h3 class="product-card__title">Товар 5</h3>
+          <img class="product-card__image" src="images/tovar5.svg" alt="Беспроводные наушники" width="300" height="300">
+          <p class="product-card__description">Беспроводные наушники — это устройство для прослушивания музыки, просмотра фильмов и общения без подключения через провод. Модель из учебного каталога выполнена в полноразмерном корпусе с мягкими амбушюрами и регулируемым оголовьем, чтобы её было удобно использовать дома, на учёбе или во время игры.</p>
+          <p class="product-card__price">Цена: 3000 руб.</p>
+          <a class="product-card__link" href="product.html#product-5">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 5">Заказать</button>
+        </article>
+
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
+          <h3 class="product-card__title">Товар 6</h3>
+          <img class="product-card__image" src="images/tovar6.svg" alt="Механическая клавиатура" width="300" height="300">
+          <p class="product-card__description">Механическая клавиатура — это устройство ввода, в котором под каждой клавишей находится отдельный переключатель. Такая конструкция даёт ощутимый отклик при нажатии. Клавиатура подходит для набора текста, написания кода и компьютерных игр, а подсветка помогает различать клавиши при слабом освещении.</p>
+          <p class="product-card__price">Цена: 3500 руб.</p>
+          <a class="product-card__link" href="product.html#product-6">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 6">Заказать</button>
+        </article>
+
+        <article class="product-card product-card--featured">
+          <span class="product-card__badge">ХИТ</span>
+          <h3 class="product-card__title">Товар 7</h3>
+          <img class="product-card__image" src="images/tovar7.svg" alt="Игровая мышь" width="300" height="300">
+          <p class="product-card__description">Игровая мышь — это устройство для управления курсором, рассчитанное на работу за компьютером и прохождение игр. Модель из учебного каталога имеет колесо прокрутки и дополнительные боковые кнопки. Форма корпуса позволяет удобно расположить ладонь при работе с документами, браузером или игровыми приложениями.</p>
+          <p class="product-card__price">Цена: 1200 руб.</p>
+          <a class="product-card__link" href="product.html#product-7">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 7">Заказать</button>
+        </article>
+
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
+          <h3 class="product-card__title">Товар 8</h3>
+          <img class="product-card__image" src="images/tovar8.svg" alt="Монитор" width="300" height="300">
+          <p class="product-card__description">Монитор — это устройство, которое выводит изображение с компьютера и позволяет работать с программами, смотреть видео и запускать игры. Модель из учебного каталога представлена с широким экраном и настольной подставкой. На таком экране удобно размещать окно браузера, редактор кода и учебные материалы.</p>
+          <p class="product-card__price">Цена: 4500 руб.</p>
+          <a class="product-card__link" href="product.html#product-8">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 8">Заказать</button>
+        </article>
+
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
+          <h3 class="product-card__title">Товар 9</h3>
+          <img class="product-card__image" src="images/tovar9.svg" alt="Портативная колонка" width="300" height="300">
+          <p class="product-card__description">Портативная колонка — это компактная акустическая система для воспроизведения музыки и другого звука с телефона или компьютера. В учебном каталоге представлена беспроводная модель с кнопками управления на корпусе. Колонку можно поставить на рабочий стол или взять с собой, когда хочется послушать музыку вместе с друзьями.</p>
+          <p class="product-card__price">Цена: 1800 руб.</p>
+          <a class="product-card__link" href="product.html#product-9">Подробнее</a>
+          <button class="button button--primary product-card__button" type="button" data-product="Товар 9">Заказать</button>
+        </article>
+      </div>
 </section>
 
+
+    <section class="section" id="reviews">
+      <h2 class="section__title">Отзывы покупателей</h2>
+      <p>Примеры отзывов для учебного проекта.</p>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <h3 class="review-card__name">Анна</h3>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
+          <p class="review-card__text">Удобно смотреть товары и сравнивать цены. Нужную информацию нашла быстро.</p>
+        </article>
+
+        <article class="review-card">
+          <h3 class="review-card__name">Максим</h3>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
+          <p class="review-card__text">Понравилось, что характеристики вынесены на отдельную страницу. Всё понятно.</p>
+        </article>
+
+        <article class="review-card">
+          <h3 class="review-card__name">Ирина</h3>
+          <p class="review-card__rating" aria-label="Оценка: 4 из 5">★★★★☆</p>
+          <p class="review-card__text">Простая форма заявки. Подсказка с форматом телефона помогла заполнить её с первого раза.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2 class="section__title">Частые вопросы (FAQ)</h2>
+
+      <details class="faq-item">
+        <summary class="faq-item__question">Как оформить заявку?</summary>
+        <p class="faq-item__answer">Выберите подходящий товар и нажмите «Заказать» на главной странице. Откроется окно с формой, а выбранный товар будет записан в неё автоматически. Также можно открыть страницу «Заявка» через верхнее меню и самостоятельно выбрать один из девяти товаров в списке.</p>
+        <p class="faq-item__answer">Укажите имя, e-mail и телефон в формате +7 (900) 000-00-00, выберите тему и подтвердите согласие на обработку данных. Дату связи и комментарий можно заполнить по желанию. После нажатия «Отправить заявку» браузер проверит поля и покажет сообщение. В этом учебном проекте заявка не отправляется на сервер.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__question">Где посмотреть характеристики товара?</summary>
+        <p class="faq-item__answer">У каждой карточки на главной странице и в каталоге есть ссылка «Подробнее». Она открывает страницу «Товары» и переводит к описанию выбранной позиции. Там можно посмотреть изображение, прочитать описание и найти таблицу с категорией, ценой и информацией о наличии.</p>
+        <p class="faq-item__answer">После просмотра можно нажать «Оставить заявку». На странице формы выберите нужный товар из списка: переход со страницы характеристик пока не подставляет его автоматически. Цены и сведения о наличии приведены для учебного примера, поэтому они не являются условиями реальной продажи.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__question">Можно ли оплатить заказ на сайте?</summary>
+        <p class="faq-item__answer">Сейчас оплатить заказ на сайте нельзя. Это учебный интернет-магазин, в котором показаны каталог, описания товаров и пример оформления заявки. Платёжная система, доставка и обработка реальных заказов пока не подключены, поэтому сайт не запрашивает данные банковской карты.</p>
+        <p class="faq-item__answer">Форма нужна для демонстрации проверки имени, электронной почты, телефона и других обязательных полей. Если данные заполнены правильно, появляется учебное сообщение об успешной проверке. При этом информация не отправляется на сервер и не сохраняется после перезагрузки страницы.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-item__question">Как работают фильтры в каталоге?</summary>
+        <p class="faq-item__answer">В каталоге есть блок с выбором категории и полями минимальной и максимальной цены. Пока это статический макет: отмеченные пункты и введённые числа не скрывают товары и не меняют порядок карточек. Кнопка «Применить» специально отключена, а все девять товаров доступны для просмотра сразу.</p>
+        <p class="faq-item__answer">На большом экране блок фильтров остаётся под шапкой при прокрутке, пока вы просматриваете каталог. Если экран небольшой, фильтры располагаются над карточками без прилипания. Метки «ХИТ», «НОВИНКА» и «АКЦИЯ» помогают визуально выделить товары, но тоже используются только как примеры оформления.</p>
+      </details>
+    </section>
 
     <aside class="aside-info">
       <h2 class="aside-info__title">Информация для студентов</h2>

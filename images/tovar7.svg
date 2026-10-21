@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
+  <title id="title">Игровая мышь</title>
+  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
+  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M93 129a57 57 0 0 1 114 0v69a57 57 0 0 1-114 0Z" fill="#eef5ff"/>
+    <path d="M150 72v78m-56 8h112m-56-86V48c0-14 13-18 24-18"/>
+    <rect x="142" y="103" width="16" height="31" rx="8" fill="#0057b8"/>
+  </g>
+</svg>
