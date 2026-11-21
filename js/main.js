@@ -300,7 +300,7 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
 
     if (form.dataset.success === 'dialog') {
       orderDialog?.close();
-      showToast(product ? `Заявка на «${product}» принята. Перезвоним в течение часа.` : 'Заявка принята. Перезвоним в течение часа.');
+      showToast(product ? `Заказ «${product}» принят. Перезвоним в течение часа.` : 'Заказ принят. Перезвоним в течение часа.');
     } else {
       const success = form.nextElementSibling;
       if (success && success.classList.contains('success-message')) {
@@ -318,7 +318,7 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
   });
 });
 
-/* ---------- Модальное окно заявки ---------- */
+/* ---------- Модальное окно заказа ---------- */
 
 if (orderDialog) {
   const productLabel = document.getElementById('order-dialog-product');
@@ -351,7 +351,7 @@ if (orderDialog) {
   });
 }
 
-/* ---------- Страница заявки: выбор товара и превью ---------- */
+/* ---------- Страница оформления заказа: выбор товара и превью ---------- */
 
 const productSelect = document.getElementById('order-product');
 
