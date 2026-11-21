@@ -3,324 +3,485 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Учебный интернет-магазин: популярные товары, преимущества и оформление заявки.">
-  <title>Главная — Учебный интернет-магазин</title>
+  <meta name="description" content="Интернет-магазин «Вольт»: консоли, игры, аксессуары, аудио и стильные вещи с доставкой по всей России.">
+  <meta name="theme-color" content="#15161b">
+  <title>Вольт — игры, техника и стиль с доставкой</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="css/responsive.css">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Учебный интернет-магазин">
-<meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-<meta property="og:image" content="https://shadowboyyy.github.io/kr1-html-css-shop/images/tovar1.jpeg">
-
+  <meta property="og:site_name" content="Вольт">
+  <meta property="og:title" content="Вольт — игры, техника и стиль с доставкой">
+  <meta property="og:description" content="Интернет-магазин «Вольт»: консоли, игры, аксессуары, аудио и стильные вещи с доставкой по всей России.">
+  <meta property="og:image" content="https://shadowboyyy.github.io/kr1-html-css-shop/images/tovar1.jpeg">
+  <script>
+    document.documentElement.classList.add('js');
+    if (location.hash) document.documentElement.classList.add('is-anchor-load');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion-ready');
+      setTimeout(() => { if (!window.Motion) document.documentElement.classList.remove('motion-ready'); }, 2500);
+    }
+  </script>
+  <script src="js/vendor/motion.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/motion-effects.js" defer></script>
 </head>
-<body id="top">
+<body class="page page--index" id="top">
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
 
   <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+    <div class="site-header__inner container">
+      <a class="logo site-header__logo" href="index.html" aria-label="Вольт — на главную">
+        <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="logo__text">Вольт</span>
+      </a>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+      <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+        <span class="site-header__toggle-icon site-header__toggle-icon--open"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+        <span class="site-header__toggle-icon site-header__toggle-icon--close"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товары</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
+        <a class="site-nav__phone" href="tel:+79000000000"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 (900) 000‑00‑00</span></a>
       </nav>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
-  <main class="site-main">
+  <main class="main" id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <p class="eyebrow" data-hero-item><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg> Новая коллекция — ноябрь 2026</p>
+          <h1 class="hero__title" id="hero-title" data-hero-item>Техника, в&nbsp;которой есть <span class="hero__accent">заряд</span></h1>
+          <p class="hero__lead" data-hero-item>Консоли, игры, аксессуары и вещи со&nbsp;стилем. Проверяем каждый заказ и&nbsp;привозим от&nbsp;одного дня.</p>
+          <div class="hero__actions" data-hero-item>
+            <a class="button button--primary button--large" href="catalog.html">Смотреть каталог <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="button button--ghost button--large" href="order.html">Оставить заявку</a>
+          </div>
+          <ul class="hero__facts" data-hero-item>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg> Доставка от 1 дня</li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg> Гарантия 12 месяцев</li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg> Оплата при получении</li>
+          </ul>
+        </div>
 
-    <section class="hero">
-      <h1 class="hero__title">Учебный интернет-магазин</h1>
-      <p>
-        Многостраничный учебный сайт интернет-магазина.
-        Посмотрите каталог, изучите характеристики товаров и оформите заявку.
-      </p>
-      <a class="button button--primary" href="#popular">Перейти к товарам</a>
-      <a class="button button--secondary" href="#reviews">Отзывы</a>
-      <a class="button button--secondary" href="#faq">FAQ</a>
-    </section>
-
-    <section class="section" id="advantages">
-      <h2 class="section__title">Преимущества проекта</h2>
-      <ul class="advantages-list">
-        <li>понятная HTML-структура;</li>
-        <li>семантические блоки страницы;</li>
-        <li>подключение внешнего CSS-файла;</li>
-        <li>единая навигация между страницами.</li>
-      </ul>
-    </section>
-
-    <section class="section" id="popular">
-  <h2 class="section__title">Популярные товары</h2>
-
-      <div class="products-grid">
-        <article class="product-card product-card--featured">
-          <span class="product-card__badge">ХИТ</span>
-          <h3 class="product-card__title">Товар 1</h3>
-          <img class="product-card__image" src="images/tovar1.jpeg" alt="Sony PlayStation 5 Pro" width="300" height="300">
-          <p class="product-card__description">Sony PlayStation 5 Pro — это обновленная и самая мощная версия стационарной игровой консоли поколения, выпущенная для повышенной производительности в играх</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
-          <a class="product-card__link" href="product.html#product-1">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 1">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
-          <h3 class="product-card__title">Товар 2</h3>
-          <img class="product-card__image" src="images/tovar2.jpeg" alt="Раф Симонс" width="300" height="300">
-          <p class="product-card__description">Раф Симонс (Raf Simons, род. 12 января 1968 года) — знаменитый бельгийский модный дизайнер, один из самых влиятельных новаторов в современной индустрии одежды, который пришел в моду из промышленного дизайна и дизайна мебели.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
-          <a class="product-card__link" href="product.html#product-2">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 2">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
-          <h3 class="product-card__title">Товар 3</h3>
-          <img class="product-card__image" src="images/tovar3.jpeg" alt="Grand Theft Auto VI" width="300" height="300">
-          <p class="product-card__description">Grand Theft Auto VI (GTA 6) — это ожидаемая компьютерная игра в жанре action-adventure с открытым миром от студии Rockstar Games, выход которой запланирован на 19 ноября 2026 года для консолей PlayStation 5 и Xbox Series X/S</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
-          <a class="product-card__link" href="product.html#product-3">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 3">Заказать</button>
-        </article>
-
-        <article class="product-card product-card--featured">
-          <span class="product-card__badge">ХИТ</span>
-          <h3 class="product-card__title">Товар 4</h3>
-          <img class="product-card__image" src="images/tovar4.svg" alt="Беспроводной геймпад" width="300" height="300">
-          <p class="product-card__description">Беспроводной геймпад — это игровой контроллер, который позволяет управлять персонажем и взаимодействовать с игровым миром без использования клавиатуры. На корпусе расположены кнопки, два стика и крестовина, а удобная форма помогает держать устройство в руках во время прохождения игр.</p>
-          <p class="product-card__price">Цена: 2500 руб.</p>
-          <a class="product-card__link" href="product.html#product-4">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 4">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
-          <h3 class="product-card__title">Товар 5</h3>
-          <img class="product-card__image" src="images/tovar5.svg" alt="Беспроводные наушники" width="300" height="300">
-          <p class="product-card__description">Беспроводные наушники — это устройство для прослушивания музыки, просмотра фильмов и общения без подключения через провод. Модель из учебного каталога выполнена в полноразмерном корпусе с мягкими амбушюрами и регулируемым оголовьем, чтобы её было удобно использовать дома, на учёбе или во время игры.</p>
-          <p class="product-card__price">Цена: 3000 руб.</p>
-          <a class="product-card__link" href="product.html#product-5">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 5">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
-          <h3 class="product-card__title">Товар 6</h3>
-          <img class="product-card__image" src="images/tovar6.svg" alt="Механическая клавиатура" width="300" height="300">
-          <p class="product-card__description">Механическая клавиатура — это устройство ввода, в котором под каждой клавишей находится отдельный переключатель. Такая конструкция даёт ощутимый отклик при нажатии. Клавиатура подходит для набора текста, написания кода и компьютерных игр, а подсветка помогает различать клавиши при слабом освещении.</p>
-          <p class="product-card__price">Цена: 3500 руб.</p>
-          <a class="product-card__link" href="product.html#product-6">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 6">Заказать</button>
-        </article>
-
-        <article class="product-card product-card--featured">
-          <span class="product-card__badge">ХИТ</span>
-          <h3 class="product-card__title">Товар 7</h3>
-          <img class="product-card__image" src="images/tovar7.svg" alt="Игровая мышь" width="300" height="300">
-          <p class="product-card__description">Игровая мышь — это устройство для управления курсором, рассчитанное на работу за компьютером и прохождение игр. Модель из учебного каталога имеет колесо прокрутки и дополнительные боковые кнопки. Форма корпуса позволяет удобно расположить ладонь при работе с документами, браузером или игровыми приложениями.</p>
-          <p class="product-card__price">Цена: 1200 руб.</p>
-          <a class="product-card__link" href="product.html#product-7">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 7">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--new">НОВИНКА</span>
-          <h3 class="product-card__title">Товар 8</h3>
-          <img class="product-card__image" src="images/tovar8.svg" alt="Монитор" width="300" height="300">
-          <p class="product-card__description">Монитор — это устройство, которое выводит изображение с компьютера и позволяет работать с программами, смотреть видео и запускать игры. Модель из учебного каталога представлена с широким экраном и настольной подставкой. На таком экране удобно размещать окно браузера, редактор кода и учебные материалы.</p>
-          <p class="product-card__price">Цена: 4500 руб.</p>
-          <a class="product-card__link" href="product.html#product-8">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 8">Заказать</button>
-        </article>
-
-        <article class="product-card">
-          <span class="product-card__badge product-card__badge--sale">АКЦИЯ</span>
-          <h3 class="product-card__title">Товар 9</h3>
-          <img class="product-card__image" src="images/tovar9.svg" alt="Портативная колонка" width="300" height="300">
-          <p class="product-card__description">Портативная колонка — это компактная акустическая система для воспроизведения музыки и другого звука с телефона или компьютера. В учебном каталоге представлена беспроводная модель с кнопками управления на корпусе. Колонку можно поставить на рабочий стол или взять с собой, когда хочется послушать музыку вместе с друзьями.</p>
-          <p class="product-card__price">Цена: 1800 руб.</p>
-          <a class="product-card__link" href="product.html#product-9">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 9">Заказать</button>
-        </article>
-      </div>
-</section>
-
-
-    <section class="section" id="reviews">
-      <h2 class="section__title">Отзывы покупателей</h2>
-      <p>Примеры отзывов для учебного проекта.</p>
-
-      <div class="reviews-grid">
-        <article class="review-card">
-          <h3 class="review-card__name">Анна</h3>
-          <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
-          <p class="review-card__text">Удобно смотреть товары и сравнивать цены. Нужную информацию нашла быстро.</p>
-        </article>
-
-        <article class="review-card">
-          <h3 class="review-card__name">Максим</h3>
-          <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
-          <p class="review-card__text">Понравилось, что характеристики вынесены на отдельную страницу. Всё понятно.</p>
-        </article>
-
-        <article class="review-card">
-          <h3 class="review-card__name">Ирина</h3>
-          <p class="review-card__rating" aria-label="Оценка: 4 из 5">★★★★☆</p>
-          <p class="review-card__text">Простая форма заявки. Подсказка с форматом телефона помогла заполнить её с первого раза.</p>
-        </article>
+        <div class="hero__visual">
+          <figure class="hero__tile hero__tile--main" data-hero-tile>
+            <picture>
+  <source type="image/webp" srcset="images/tovar1-320.webp 320w, images/tovar1-447.webp 447w" sizes="(min-width: 1024px) 420px, (min-width: 640px) 60vw, 86vw">
+  <img class="hero__image" src="images/tovar1.jpeg" srcset="images/tovar1-320.jpg 320w, images/tovar1.jpeg 447w" sizes="(min-width: 1024px) 420px, (min-width: 640px) 60vw, 86vw" alt="Игровая консоль Sony PlayStation 5 Pro в белом корпусе" width="447" height="447" fetchpriority="high" decoding="async">
+</picture>
+            <figcaption class="hero__caption">
+              <span class="hero__caption-name">PlayStation 5 Pro</span>
+              <span class="hero__caption-price">79 990 ₽</span>
+            </figcaption>
+          </figure>
+          <a class="hero__tile hero__tile--side" href="product.html#product-2" data-hero-tile>
+            <img class="hero__thumb" src="images/tovar2-320.jpg" alt="" width="320" height="192">
+            <span class="hero__tile-label">Raf Simons Ozweego III</span>
+          </a>
+          <a class="hero__tile hero__tile--side hero__tile--dark" href="product.html#product-4" data-hero-tile>
+            <img class="hero__thumb" src="images/tovar4.svg" alt="" width="600" height="450">
+            <span class="hero__tile-label">Геймпад Вольт G1</span>
+          </a>
+          <p class="hero__sticker" data-hero-tile><span>−12%</span> на&nbsp;GTA&nbsp;VI</p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="faq">
-      <h2 class="section__title">Частые вопросы (FAQ)</h2>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Консоли</span><span>Игры</span><span>Аксессуары</span><span>Аудио</span><span>Мониторы</span><span>Стиль</span>
+        <span>Консоли</span><span>Игры</span><span>Аксессуары</span><span>Аудио</span><span>Мониторы</span><span>Стиль</span>
+      </div>
+    </div>
 
-      <details class="faq-item">
-        <summary class="faq-item__question">Как оформить заявку?</summary>
-        <p class="faq-item__answer">Выберите подходящий товар и нажмите «Заказать» на главной странице. Откроется окно с формой, а выбранный товар будет записан в неё автоматически. Также можно открыть страницу «Заявка» через верхнее меню и самостоятельно выбрать один из девяти товаров в списке.</p>
-        <p class="faq-item__answer">Укажите имя, e-mail и телефон в формате +7 (900) 000-00-00, выберите тему и подтвердите согласие на обработку данных. Дату связи и комментарий можно заполнить по желанию. После нажатия «Отправить заявку» браузер проверит поля и покажет сообщение. В этом учебном проекте заявка не отправляется на сервер.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-item__question">Где посмотреть характеристики товара?</summary>
-        <p class="faq-item__answer">У каждой карточки на главной странице и в каталоге есть ссылка «Подробнее». Она открывает страницу «Товары» и переводит к описанию выбранной позиции. Там можно посмотреть изображение, прочитать описание и найти таблицу с категорией, ценой и информацией о наличии.</p>
-        <p class="faq-item__answer">После просмотра можно нажать «Оставить заявку». На странице формы выберите нужный товар из списка: переход со страницы характеристик пока не подставляет его автоматически. Цены и сведения о наличии приведены для учебного примера, поэтому они не являются условиями реальной продажи.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-item__question">Можно ли оплатить заказ на сайте?</summary>
-        <p class="faq-item__answer">Сейчас оплатить заказ на сайте нельзя. Это учебный интернет-магазин, в котором показаны каталог, описания товаров и пример оформления заявки. Платёжная система, доставка и обработка реальных заказов пока не подключены, поэтому сайт не запрашивает данные банковской карты.</p>
-        <p class="faq-item__answer">Форма нужна для демонстрации проверки имени, электронной почты, телефона и других обязательных полей. Если данные заполнены правильно, появляется учебное сообщение об успешной проверке. При этом информация не отправляется на сервер и не сохраняется после перезагрузки страницы.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-item__question">Как работают фильтры в каталоге?</summary>
-        <p class="faq-item__answer">В каталоге есть блок с выбором категории и полями минимальной и максимальной цены. Пока это статический макет: отмеченные пункты и введённые числа не скрывают товары и не меняют порядок карточек. Кнопка «Применить» специально отключена, а все девять товаров доступны для просмотра сразу.</p>
-        <p class="faq-item__answer">На большом экране блок фильтров остаётся под шапкой при прокрутке, пока вы просматриваете каталог. Если экран небольшой, фильтры располагаются над карточками без прилипания. Метки «ХИТ», «НОВИНКА» и «АКЦИЯ» помогают визуально выделить товары, но тоже используются только как примеры оформления.</p>
-      </details>
+    <section class="section" id="advantages" aria-labelledby="advantages-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Почему «Вольт»</p>
+          <h2 class="section__title" id="advantages-title">Покупать технику должно быть просто</h2>
+        </div>
+        <ul class="features" data-stagger>
+          <li class="feature">
+            <span class="feature__icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+            <h3 class="feature__title">Быстрая доставка</h3>
+            <p class="feature__text">По Москве — на следующий день, по России — от двух дней. Отслеживайте посылку по номеру заказа.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3 class="feature__title">Официальная гарантия</h3>
+            <p class="feature__text">Год гарантии на всю технику и обмен в течение 14 дней, если что-то не подошло.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg></span>
+            <h3 class="feature__title">Оплата при получении</h3>
+            <p class="feature__text">Сначала осматриваете заказ, потом платите картой или наличными курьеру.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/></svg></span>
+            <h3 class="feature__title">Живая поддержка</h3>
+            <p class="feature__text">Отвечаем в мессенджерах и по телефону каждый день с 10:00 до 21:00.</p>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <aside class="aside-info">
-      <h2 class="aside-info__title">Информация для студентов</h2>
-      <p>
-        В проекте используются HTML, CSS, Flex/Grid и БЭМ.
-        Форма демонстрирует базовую валидацию; отправка на сервер пока не подключена.
-      </p>
-    </aside>
+    <section class="section section--tinted" id="popular" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="section__head section__head--row" data-reveal>
+          <div>
+            <p class="eyebrow">Выбор покупателей</p>
+            <h2 class="section__title" id="popular-title">Популярные товары</h2>
+          </div>
+          <a class="link-arrow" href="catalog.html">Весь каталог <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
 
+        <div class="products-grid" data-stagger>
+    <article class="product-card" data-category="consoles" data-price="79990" data-badge="hit" data-sale="false" data-index="1">
+      <div class="product-card__media">
+        <picture>
+  <source type="image/webp" srcset="images/tovar1-320.webp 320w, images/tovar1-447.webp 447w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw">
+  <img class="product-card__image" src="images/tovar1.jpeg" srcset="images/tovar1-320.jpg 320w, images/tovar1.jpeg 447w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw" alt="Игровая консоль Sony PlayStation 5 Pro в белом корпусе" width="447" height="447" loading="lazy" decoding="async">
+</picture>
+      </div>
+      <span class="product-card__badge product-card__badge--hit">Хит</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Консоли</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-1">Sony PlayStation 5 Pro</a></h3>
+        <p class="product-card__description">Самая мощная версия PS5: улучшенная графика, стабильные 60 кадров и трассировка лучей.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>79 990 ₽</p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Sony PlayStation 5 Pro" data-price="79 990 ₽" aria-label="Заказать: Sony PlayStation 5 Pro">Заказать</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="style" data-price="34990" data-badge="new" data-sale="false" data-index="2">
+      <div class="product-card__media">
+        <picture>
+  <source type="image/webp" srcset="images/tovar2-320.webp 320w, images/tovar2-577.webp 577w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw">
+  <img class="product-card__image" src="images/tovar2.jpeg" srcset="images/tovar2-320.jpg 320w, images/tovar2.jpeg 577w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw" alt="Кроссовки Raf Simons Ozweego III с чёрным верхом и красной подошвой" width="577" height="346" loading="lazy" decoding="async">
+</picture>
+      </div>
+      <span class="product-card__badge product-card__badge--new">Новинка</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Стиль</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-2">Кроссовки Raf Simons Ozweego III</a></h3>
+        <p class="product-card__description">Культовый силуэт бельгийского дизайнера: чёрный верх и объёмная красная подошва.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>34 990 ₽</p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Кроссовки Raf Simons Ozweego III" data-price="34 990 ₽" aria-label="Заказать: Кроссовки Raf Simons Ozweego III">Заказать</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="games" data-price="6990" data-badge="sale" data-sale="true" data-index="3">
+      <div class="product-card__media">
+        <picture>
+  <source type="image/webp" srcset="images/tovar3-320.webp 320w, images/tovar3-480.webp 480w, images/tovar3-739.webp 739w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw">
+  <img class="product-card__image" src="images/tovar3.jpeg" srcset="images/tovar3-320.jpg 320w, images/tovar3-480.jpg 480w, images/tovar3.jpeg 739w" sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw" alt="Обложка игры Grand Theft Auto VI" width="739" height="415" loading="lazy" decoding="async">
+</picture>
+      </div>
+      <span class="product-card__badge product-card__badge--sale">Акция</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Игры</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-3">Grand Theft Auto VI</a></h3>
+        <p class="product-card__description">Action-adventure с огромным открытым миром от Rockstar Games для PS5 и Xbox Series X|S.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>6 990 ₽ <s class="product-card__price-old"><span class="visually-hidden">Старая цена: </span>7 990 ₽</s></p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Grand Theft Auto VI" data-price="6 990 ₽" aria-label="Заказать: Grand Theft Auto VI">Заказать</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="audio" data-price="12990" data-badge="new" data-sale="false" data-index="5">
+      <div class="product-card__media">
+        <img class="product-card__image" src="images/tovar5.svg" alt="Полноразмерные беспроводные наушники чёрного цвета" width="600" height="450" loading="lazy" decoding="async">
+      </div>
+      <span class="product-card__badge product-card__badge--new">Новинка</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Аудио</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-5">Наушники Вольт H2</a></h3>
+        <p class="product-card__description">Полноразмерные наушники с активным шумоподавлением и мягкими амбушюрами.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>12 990 ₽</p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Наушники Вольт H2" data-price="12 990 ₽" aria-label="Заказать: Наушники Вольт H2">Заказать</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="accessories" data-price="8990" data-badge="sale" data-sale="true" data-index="6">
+      <div class="product-card__media">
+        <img class="product-card__image" src="images/tovar6.svg" alt="Механическая клавиатура без цифрового блока с цветными клавишами" width="600" height="450" loading="lazy" decoding="async">
+      </div>
+      <span class="product-card__badge product-card__badge--sale">Акция</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Аксессуары</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-6">Механическая клавиатура Вольт K87</a></h3>
+        <p class="product-card__description">Компактный формат TKL, горячая замена переключателей и RGB‑подсветка.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>8 990 ₽ <s class="product-card__price-old"><span class="visually-hidden">Старая цена: </span>10 990 ₽</s></p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Механическая клавиатура Вольт K87" data-price="8 990 ₽" aria-label="Заказать: Механическая клавиатура Вольт K87">Заказать</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="monitors" data-price="27990" data-badge="new" data-sale="false" data-index="8">
+      <div class="product-card__media">
+        <img class="product-card__image" src="images/tovar8.svg" alt="Широкоформатный монитор на подставке" width="600" height="450" loading="lazy" decoding="async">
+      </div>
+      <span class="product-card__badge product-card__badge--new">Новинка</span>
+      <div class="product-card__body">
+        <p class="product-card__category">Мониторы</p>
+        <h3 class="product-card__title"><a class="product-card__link" href="product.html#product-8">Монитор Вольт 27″ QHD 165 Гц</a></h3>
+        <p class="product-card__description">IPS‑матрица 27 дюймов, разрешение 2560×1440 и частота обновления 165 Гц.</p>
+      </div>
+      <div class="product-card__footer">
+        <p class="product-card__price"><span class="visually-hidden">Цена: </span>27 990 ₽</p>
+        <button class="button button--primary button--small product-card__button" type="button" data-product="Монитор Вольт 27″ QHD 165 Гц" data-price="27 990 ₽" aria-label="Заказать: Монитор Вольт 27″ QHD 165 Гц">Заказать</button>
+      </div>
+    </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="stats-title">«Вольт» в цифрах</h2>
+        <dl class="stats__grid" data-stagger>
+          <div class="stats__item"><dt class="stats__label">Довольных покупателей</dt><dd class="stats__value"><span data-count="12000" data-suffix="+">12&nbsp;000+</span></dd></div>
+          <div class="stats__item"><dt class="stats__label">Средняя оценка</dt><dd class="stats__value"><span data-count="4.9" data-decimals="1">4,9</span></dd></div>
+          <div class="stats__item"><dt class="stats__label">Пунктов выдачи</dt><dd class="stats__value"><span data-count="350">350</span></dd></div>
+          <div class="stats__item"><dt class="stats__label">Часов на доставку по Москве</dt><dd class="stats__value"><span data-count="24">24</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Отзывы</p>
+          <h2 class="section__title" id="reviews-title">Что говорят покупатели</h2>
+        </div>
+
+        <div class="reviews-grid" data-stagger>
+          <article class="review-card">
+            <p class="review-card__rating" role="img" aria-label="Оценка: 5 из 5"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg></p>
+            <p class="review-card__text">«Заказала PS5 Pro вечером, привезли на следующий день. Курьер дождался, пока я проверю консоль».</p>
+            <footer class="review-card__author"><span class="review-card__avatar" aria-hidden="true">А</span><span><strong class="review-card__name">Анна</strong> Москва</span></footer>
+          </article>
+          <article class="review-card">
+            <p class="review-card__rating" role="img" aria-label="Оценка: 5 из 5"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg></p>
+            <p class="review-card__text">«Удобно, что характеристики собраны в одной таблице — сравнил клавиатуры за пару минут».</p>
+            <footer class="review-card__author"><span class="review-card__avatar" aria-hidden="true">М</span><span><strong class="review-card__name">Максим</strong> Казань</span></footer>
+          </article>
+          <article class="review-card">
+            <p class="review-card__rating" role="img" aria-label="Оценка: 4 из 5"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg><span class="review-card__star-empty"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></svg></span></p>
+            <p class="review-card__text">«Простая форма заявки: подсказка с форматом телефона помогла заполнить всё с первого раза».</p>
+            <footer class="review-card__author"><span class="review-card__avatar" aria-hidden="true">И</span><span><strong class="review-card__name">Ирина</strong> Санкт‑Петербург</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tinted" id="faq" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Вопросы и ответы</p>
+          <h2 class="section__title" id="faq-title">Частые вопросы</h2>
+          <p class="section__lead">Не нашли ответ? Напишите нам на странице <a href="contacts.html">контактов</a>.</p>
+        </div>
+
+        <div class="faq__list" data-stagger>
+          <details class="faq-item">
+            <summary class="faq-item__question">Как оформить заказ?</summary>
+            <div class="faq-item__answer">
+              <p>Нажмите «Заказать» в карточке товара — откроется форма, в которую выбранный товар подставится автоматически. Можно также перейти на страницу «Заявка» и выбрать товар из списка.</p>
+              <p>Укажите имя, телефон и e-mail, выберите тему и подтвердите согласие на обработку данных. Менеджер перезвонит в течение часа в рабочее время.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Где посмотреть характеристики?</summary>
+            <div class="faq-item__answer">
+              <p>Нажмите на название товара в карточке — откроется страница «Товары» с подробным описанием и таблицей характеристик: категория, бренд, гарантия, наличие и доставка.</p>
+              <p>Кнопка «Оформить на странице заявки» сразу подставит выбранный товар в форму.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Как оплатить заказ?</summary>
+            <div class="faq-item__answer">
+              <p>Оплата — при получении, картой или наличными. Сайт не запрашивает данные банковской карты, поэтому оформлять заявку безопасно.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Как работают фильтры в каталоге?</summary>
+            <div class="faq-item__answer">
+              <p>Отметьте нужные категории, задайте диапазон цен или включите «Только со скидкой» — список обновится сразу. Сортировка меняет порядок карточек, а кнопка «Сбросить» возвращает все товары.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta__box" data-reveal>
+          <h2 class="cta__title" id="cta-title">Не нашли то, что искали?</h2>
+          <p class="cta__text">Оставьте заявку — подберём модель под ваш бюджет и привезём под заказ.</p>
+          <a class="button button--accent button--large" href="order.html">Оставить заявку <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer" id="contacts">
-    <p class="site-footer__text"><a href="contacts.html">Контактная информация</a> · <a href="order.html">Оставить заявку</a></p>
-    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="logo logo--inverse" href="index.html" aria-label="Вольт — на главную">
+            <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="logo__text">Вольт</span>
+          </a>
+          <p class="site-footer__tagline">Игры, техника и вещи со&nbsp;стилем. Привозим по&nbsp;всей России, проверяем каждый заказ перед отправкой.</p>
+
+          <form class="subscribe" id="subscribe-form" action="#" method="post" novalidate>
+            <label class="subscribe__label" for="subscribe-email">Новинки и скидки раз в неделю</label>
+            <div class="subscribe__row">
+              <input class="subscribe__input" id="subscribe-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="subscribe-status">
+              <button class="button button--accent subscribe__button" type="submit">Подписаться</button>
+            </div>
+            <p class="subscribe__status" id="subscribe-status" role="status"></p>
+          </form>
+        </div>
+
+        <nav class="site-footer__column" aria-labelledby="footer-shop-title">
+          <h2 class="site-footer__title" id="footer-shop-title">Магазин</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+            <li><a class="site-footer__link" href="product.html">Товары</a></li>
+            <li><a class="site-footer__link" href="order.html">Заявка</a></li>
+            <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__column" aria-labelledby="footer-help-title">
+          <h2 class="site-footer__title" id="footer-help-title">Покупателям</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html#advantages">Доставка и гарантия</a></li>
+            <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+            <li><a class="site-footer__link" href="index.html#reviews">Отзывы</a></li>
+            <li><a class="site-footer__link" href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__column">
+          <h2 class="site-footer__title">Связаться</h2>
+          <ul class="site-footer__list site-footer__list--contacts">
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a class="site-footer__link" href="tel:+79000000000">+7 (900) 000‑00‑00</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a class="site-footer__link" href="mailto:info@example.com">info@example.com</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Москва, ул. Вольтова, 12</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно с 10:00 до 21:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 «Вольт». Все права защищены.</p>
+        <ul class="socials" aria-label="Мы в социальных сетях">
+          <li><a class="socials__link" href="https://t.me/" rel="noopener" aria-label="Telegram"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></a></li>
+          <li><a class="socials__link" href="https://vk.com/" rel="noopener" aria-label="ВКонтакте"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7c1 6 4.5 10 10 10v-4c2 0 3 2 4 4h3c-1-3-3-5-4-5 1-1 3-3 3.5-5h-3c-1 2-2.5 4-3.5 4V7h-3v6c-2 0-3.5-3-4-6z"/></svg></a></li>
+          <li><a class="socials__link" href="https://www.youtube.com/" rel="noopener" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a></li>
+        </ul>
+        <a class="site-footer__top-link" href="#top">Наверх <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
+    </div>
+    <p class="site-footer__wordmark" aria-hidden="true">Вольт</p>
   </footer>
 
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-  <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+  <a class="back-to-top" href="#top" aria-label="Вернуться наверх страницы"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
 
-  <form class="order-form" id="order-form" action="#" method="post" novalidate>
-    <input id="selected-product" name="selected-product" type="hidden">
-
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-name">Имя</label>
-      <input class="order-form__input"
-        id="order-name"
-        name="name"
-        type="text"
-        placeholder="Введите ваше имя"
-        minlength="2"
-        autocomplete="given-name"
-        required
-      >
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-product">
+    <div class="order-dialog__header">
+      <div>
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <p class="order-dialog__product" id="order-dialog-product">Товар не выбран</p>
+      </div>
+      <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
 
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-email">E-mail</label>
-      <input class="order-form__input"
-        id="order-email"
-        name="email"
-        type="email"
-        placeholder="example@mail.ru"
-        autocomplete="email"
-        required
-      >
+    <form class="order-form" id="dialog-form" action="#" method="post" novalidate data-validate data-success="dialog">
+      <p class="form-summary" role="alert" hidden></p>
+      <p class="form-note order-form__group--wide">Поля, отмеченные звёздочкой (<span aria-hidden="true">*</span>), обязательны для заполнения.</p>
+      <input id="dialog-selected-product" name="product" type="hidden">
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-name">Имя<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-name" name="name" type="text" autocomplete="name" minlength="2" required data-error-required="Введите имя." data-error-short="Имя должно быть не короче двух букв.">
+      <p class="form-error" id="dialog-name-error" hidden></p>
     </div>
 
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-phone">Телефон</label>
-      <input class="order-form__input"
-        id="order-phone"
-        name="phone"
-        type="tel"
-        inputmode="tel"
-        aria-describedby="order-phone-hint"
-        placeholder="+7 (900) 000-00-00"
-        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-        required
-      >
-      <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-phone">Телефон<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" aria-describedby="dialog-phone-hint" required data-error-required="Введите номер телефона." data-error-pattern="Введите номер полностью: +7 (900) 000-00-00.">
+      <p class="order-form__hint" id="dialog-phone-hint">Формат: +7 (900) 000-00-00</p>
+      <p class="form-error" id="dialog-phone-error" hidden></p>
     </div>
 
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-date">Дата связи</label>
-      <input class="order-form__input"
-        id="order-date"
-        name="date"
-        type="date"
-      >
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-email">E-mail<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required data-error-required="Введите e-mail." data-error-type="Введите e-mail в формате name@example.com.">
+      <p class="form-error" id="dialog-email-error" hidden></p>
     </div>
 
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-topic">Тема заявки</label>
-      <select class="order-form__select" id="order-topic" name="topic" required>
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-topic">Тема заявки<span class="order-form__required" aria-hidden="true">*</span></label>
+      <select class="order-form__select" id="dialog-topic" name="topic" required data-error-required="Выберите тему заявки.">
         <option value="">Выберите тему</option>
         <option value="product">Заказ товара</option>
         <option value="consultation">Консультация</option>
         <option value="delivery">Доставка</option>
       </select>
+      <p class="form-error" id="dialog-topic-error" hidden></p>
     </div>
 
-    <div class="order-form__field">
-      <label class="order-form__label" for="order-comment">Комментарий</label>
-      <textarea class="order-form__textarea"
-        id="order-comment"
-        name="comment"
-        rows="4"
-        placeholder="Укажите дополнительную информацию"
-      ></textarea>
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-date">Удобная дата связи</label>
+      <input class="order-form__input" id="dialog-date" name="date" type="date">
+      <p class="form-error" id="dialog-date-error" hidden></p>
     </div>
 
-    <div class="order-form__field order-form__field--checkbox">
-      <label class="order-form__label" for="order-agreement">
-        <input class="order-form__input order-form__input--checkbox"
-          id="order-agreement"
-          name="agreement"
-          type="checkbox"
-          required
-        >
-        Я согласен на обработку данных
-      </label>
+    <div class="order-form__group order-form__group--wide">
+      <label class="order-form__label" for="dialog-comment">Комментарий</label>
+      <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="4" placeholder="Цвет, размер, удобное время доставки"></textarea>
+      <p class="form-error" id="dialog-comment-error" hidden></p>
     </div>
 
-    <div class="order-form__actions">
-      <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
-      <button class="button button--primary" type="submit">Отправить заявку</button>
+    <div class="order-form__group order-form__group--wide order-form__group--checkbox">
+      <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" required data-error-required="Подтвердите согласие на обработку данных.">
+      <label class="order-form__label order-form__label--inline" for="dialog-agreement">Согласен на обработку персональных данных<span class="order-form__required" aria-hidden="true">*</span></label>
+      <p class="form-error" id="dialog-agreement-error" hidden></p>
     </div>
-  </form>
-</dialog>
 
-<p class="success-message" id="success-message" role="status" hidden>
-  Заявка прошла проверку. Это учебная форма: данные на сервер не отправляются.
-</p>
+      <div class="order-form__actions order-form__group--wide">
+        <button class="button button--ghost" type="button" data-close-dialog>Отмена</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
 
-  <a class="button button--primary back-to-top" href="#top">Наверх</a>
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
 </body>
 </html>

@@ -1,10 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
-  <title id="title">Монитор</title>
-  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
-  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="25" y="53" width="250" height="165" rx="10" fill="#eef5ff"/>
-    <path d="M26 190h248m-142 29v29m36-29v29m-62 0h88"/>
-    <path d="m54 161 58-53 45 38 43-59 46 50" stroke-width="5"/>
-    <circle cx="150" cy="204" r="3" fill="#0057b8" stroke="none"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450" role="img" aria-label="Монитор">
+  <ellipse cx="300" cy="402" rx="140" ry="14" fill="#15161b" opacity=".08"/>
+  <rect x="60" y="50" width="480" height="280" rx="22" fill="#15161b"/>
+  <rect x="78" y="68" width="444" height="236" rx="10" fill="#3d2fd6"/>
+  <path d="M78 250c80-40 150-110 240-80s140-60 204-70v204a10 10 0 0 1-10 10H88a10 10 0 0 1-10-10Z" fill="#2a1fb0"/>
+  <circle cx="440" cy="128" r="30" fill="#c8f03c"/>
+  <path d="M270 330h60l14 54h-88Z" fill="#2a2c35"/>
+  <rect x="200" y="380" width="200" height="16" rx="8" fill="#15161b"/>
 </svg>
