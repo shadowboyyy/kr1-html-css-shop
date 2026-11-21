@@ -344,9 +344,16 @@ textarea {
 
 /* ---------- 5. Шапка и навигация ---------- */
 
+/* Шапка всегда закреплена вверху экрана, под неё отведён отступ у body */
+body {
+  padding-top: var(--header-height);
+}
+
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background-color: rgb(245 243 238 / 0.86);
   -webkit-backdrop-filter: saturate(1.6) blur(14px);
@@ -408,6 +415,9 @@ textarea {
 
 .js .nav-open .site-nav {
   display: block;
+  max-height: calc(100dvh - var(--header-height));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .site-nav__list {
