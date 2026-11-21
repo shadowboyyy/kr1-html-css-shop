@@ -3,6 +3,34 @@ document.documentElement.classList.add('js');
 
 const motionApi = () => window.siteMotion || {};
 
+/* ---------- Хранилище браузера (кабинет, избранное, тема) ---------- */
+
+const store = {
+  get(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : fallback;
+    } catch (error) {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      // Хранилище недоступно (приватный режим) — сайт работает без сохранения.
+    }
+  },
+  remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      // Нечего удалять.
+    }
+  },
+};
+window.voltStore = store;
+
 /* ---------- Уведомление внизу экрана ---------- */
 
 const toast = document.getElementById('toast');
@@ -18,6 +46,63 @@ function showToast(text) {
     setTimeout(() => { toast.textContent = ''; }, 500);
   }, 4500);
 }
+
+window.voltToast = (text) => showToast(text);
+
+/* ---------- Светлая и тёмная тема ---------- */
+
+const themeToggle = document.querySelector('.theme-toggle');
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = () => document.documentElement.dataset.theme || (systemDark.matches ? 'dark' : 'light');
+
+function syncThemeUI() {
+  const dark = currentTheme() === 'dark';
+  if (themeToggle) themeToggle.setAttribute('aria-pressed', String(dark));
+  if (themeMeta) themeMeta.setAttribute('content', dark ? '#101116' : '#f5f3ee');
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  try {
+    localStorage.setItem('volt-theme', theme);
+  } catch (error) {
+    // Тема просто не запомнится.
+  }
+  syncThemeUI();
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!document.startViewTransition || reduce) {
+      applyTheme(next);
+      return;
+    }
+
+    // Новая тема раскрывается кругом от кнопки.
+    const rect = themeToggle.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    const root = document.documentElement;
+
+    root.classList.add('theme-switching');
+    const transition = document.startViewTransition(() => applyTheme(next));
+    transition.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 600, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' },
+      );
+    });
+    transition.finished.finally(() => root.classList.remove('theme-switching'));
+  });
+}
+
+systemDark.addEventListener('change', syncThemeUI);
+syncThemeUI();
 
 /* ---------- Шапка: мобильное меню и тень при прокрутке ---------- */
 
@@ -195,6 +280,19 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
     const data = new FormData(form);
     const product = data.get('product');
 
+    // Формы кабинета обрабатывают отправку сами.
+    const validEvent = new CustomEvent('form:valid', { cancelable: true, detail: data });
+    if (!form.dispatchEvent(validEvent)) {
+      submitted = false;
+      return;
+    }
+
+    if (product && (form.id === 'dialog-form' || form.id === 'order-form')) {
+      const orders = store.get('volt-orders', []);
+      orders.unshift({ id: Date.now(), product, topic: data.get('topic'), date: new Date().toISOString() });
+      store.set('volt-orders', orders.slice(0, 50));
+    }
+
     if (form.dataset.success === 'dialog') {
       orderDialog?.close();
       showToast(product ? `Заявка на «${product}» принята. Перезвоним в течение часа.` : 'Заявка принята. Перезвоним в течение часа.');
@@ -210,6 +308,7 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
     form.reset();
     submitted = false;
     fields.forEach((field) => field.removeAttribute('aria-invalid'));
+    prefillFromProfile();
     form.dispatchEvent(new Event('change'));
   });
 });
@@ -443,3 +542,48 @@ if (window.location.hash.length > 1) {
     }, { once: true });
   }
 }
+
+
+/* ---------- Подстановка данных из личного кабинета ---------- */
+
+function prefillFromProfile() {
+  const user = store.get('volt-user', null);
+  if (!user) return;
+  const map = { name: user.name, email: user.email, phone: user.phone };
+  ['dialog', 'order', 'contact'].forEach((prefix) => {
+    Object.entries(map).forEach(([key, value]) => {
+      const input = document.getElementById(`${prefix}-${key}`);
+      if (input && value && !input.value) input.value = value;
+    });
+  });
+}
+
+prefillFromProfile();
+
+/* ---------- Избранное ---------- */
+
+const favButtons = document.querySelectorAll('[data-fav]');
+
+function syncFavorites() {
+  const favorites = store.get('volt-favorites', []);
+  favButtons.forEach((button) => {
+    button.setAttribute('aria-pressed', String(favorites.includes(Number(button.dataset.fav))));
+  });
+}
+
+favButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const id = Number(button.dataset.fav);
+    const name = button.closest('.product-card')?.querySelector('.product-card__title')?.textContent.trim() || 'Товар';
+    let favorites = store.get('volt-favorites', []);
+    const added = !favorites.includes(id);
+    favorites = added ? [...favorites, id] : favorites.filter((item) => item !== id);
+    store.set('volt-favorites', favorites);
+    syncFavorites();
+    motionApi().heart?.(button);
+    showToast(added ? `«${name}» добавлен в избранное` : `«${name}» убран из избранного`);
+  });
+});
+
+syncFavorites();
+window.voltSyncFavorites = syncFavorites;

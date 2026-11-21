@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Личный кабинет магазина «Вольт»: ваши заявки, избранные товары, бонусы и данные профиля.">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="color-scheme" content="light dark">
+  <title>Личный кабинет — Вольт</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Вольт">
+  <meta property="og:title" content="Личный кабинет — Вольт">
+  <meta property="og:description" content="Личный кабинет магазина «Вольт»: ваши заявки, избранные товары, бонусы и данные профиля.">
+  <meta property="og:image" content="https://shadowboyyy.github.io/kr1-html-css-shop/images/tovar1.jpeg">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('volt-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+    document.documentElement.classList.add('js');
+    if (location.hash) document.documentElement.classList.add('is-anchor-load');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion-ready');
+      setTimeout(() => { if (!window.Motion) document.documentElement.classList.remove('motion-ready'); }, 2500);
+    }
+  </script>
+  <script src="js/vendor/motion.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/motion-effects.js" defer></script>
+  <script src="js/chat.js" defer></script>
+  <script src="js/account.js" defer></script>
+</head>
+<body class="page page--account" id="top">
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo site-header__logo" href="index.html" aria-label="Вольт — на главную">
+        <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="logo__text">Вольт</span>
+      </a>
+
+      <div class="site-header__actions">
+        <a class="header-action header-action--active" href="account.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="header-action__text">Кабинет</span></a>
+        <button class="header-action theme-toggle" type="button" aria-pressed="false" aria-label="Тёмная тема">
+          <span class="theme-toggle__icon theme-toggle__icon--moon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span>
+          <span class="theme-toggle__icon theme-toggle__icon--sun"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+        </button>
+        <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+          <span class="site-header__toggle-icon site-header__toggle-icon--open"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+          <span class="site-header__toggle-icon site-header__toggle-icon--close"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+        </button>
+      </div>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+        <a class="site-nav__phone" href="tel:+79000000000"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 (900) 000‑00‑00</span></a>
+      </nav>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main class="main" id="main">
+    <section class="page-hero" aria-labelledby="account-title">
+      <div class="container">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+          <li class="breadcrumbs__item"><span aria-current="page">Личный кабинет</span></li>
+        </ol>
+      </nav>
+        <h1 class="page-hero__title" id="account-title" data-hero-item>Личный кабинет</h1>
+        <p class="page-hero__lead" data-hero-item>Следите за заявками, собирайте избранное и копите бонусы. Данные кабинета хранятся в этом браузере.</p>
+      </div>
+    </section>
+
+    <div class="section section--flush">
+      <div class="container">
+        <div class="account-auth" id="account-auth">
+          <section class="order-card" aria-labelledby="login-title" data-reveal>
+            <h2 class="order-card__title" id="login-title">Вход и регистрация</h2>
+            <p class="form-note">Укажите имя и e-mail — если вы здесь впервые, кабинет создастся автоматически. Поля со звёздочкой (<span aria-hidden="true">*</span>) обязательны.</p>
+            <form class="order-form" id="login-form" action="#" method="post" novalidate data-validate data-success="login">
+              <p class="form-summary" role="alert" hidden></p>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="login-name">Имя<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="login-name" name="name" type="text" autocomplete="name" minlength="2" required data-error-required="Введите имя." data-error-short="Имя должно быть не короче двух букв.">
+      <p class="form-error" id="login-name-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="login-email">E-mail<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required data-error-required="Введите e-mail." data-error-type="Введите e-mail в формате name@example.com.">
+      <p class="form-error" id="login-email-error" hidden></p>
+    </div>
+
+    <div class="order-form__group order-form__group--wide">
+      <label class="order-form__label" for="login-phone">Телефон</label>
+      <input class="order-form__input" id="login-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" data-error-pattern="Введите номер полностью: +7 (900) 000-00-00.">
+      <p class="form-error" id="login-phone-error" hidden></p>
+    </div>
+
+              <div class="order-form__actions order-form__group--wide">
+                <button class="button button--primary button--large" type="submit">Войти в кабинет <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="account-perks" aria-labelledby="perks-title" data-reveal>
+            <h2 class="account-perks__title" id="perks-title">Что даёт кабинет</h2>
+            <ul class="account-perks__list">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><div><strong>История заявок</strong><p>Все заявки с сайта и их статусы в одном месте.</p></div></li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.6-9.2-9.4C1.6 7.3 3.7 4 7.1 4c2 0 3.5 1.1 4.9 2.9C13.4 5.1 14.9 4 16.9 4c3.4 0 5.5 3.3 4.3 6.6C19.5 15.4 12 20 12 20z"/></svg><div><strong>Избранное</strong><p>Отмечайте товары сердечком в каталоге — они появятся здесь.</p></div></li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="5" rx="1"/><path d="M5 13v8h14v-8M12 8v13M12 8c-1.5-3-5-3.5-5-1s3 1 5 1zm0 0c1.5-3 5-3.5 5-1s-3 1-5 1z"/></svg><div><strong>Бонусы 5%</strong><p>Начисляем баллы с каждой заявки и списываем при следующей покупке.</p></div></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="account-dashboard" id="account-dashboard" hidden>
+          <div class="account-head">
+            <span class="account-head__avatar" id="account-avatar" aria-hidden="true">В</span>
+            <div class="account-head__info">
+              <p class="account-head__hello">Здравствуйте, <span id="account-name">гость</span>!</p>
+              <p class="account-head__email" id="account-email"></p>
+            </div>
+            <button class="button button--ghost account-head__logout" type="button" id="logout-button"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 16l-4-4 4-4M6 12h10"/></svg> Выйти</button>
+          </div>
+
+          <dl class="account-stats">
+            <div class="account-stats__item"><dt>Заявок</dt><dd id="stat-orders">0</dd></div>
+            <div class="account-stats__item"><dt>В избранном</dt><dd id="stat-favorites">0</dd></div>
+            <div class="account-stats__item account-stats__item--accent"><dt>Бонусных баллов</dt><dd id="stat-bonus">0</dd></div>
+          </dl>
+
+          <div class="tabs" role="tablist" aria-label="Разделы кабинета">
+            <button class="tabs__tab" type="button" role="tab" id="tab-orders" aria-controls="panel-orders" aria-selected="true"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Мои заявки</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-favorites" aria-controls="panel-favorites" aria-selected="false" tabindex="-1"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.6-9.2-9.4C1.6 7.3 3.7 4 7.1 4c2 0 3.5 1.1 4.9 2.9C13.4 5.1 14.9 4 16.9 4c3.4 0 5.5 3.3 4.3 6.6C19.5 15.4 12 20 12 20z"/></svg> Избранное</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="false" tabindex="-1"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg> Профиль</button>
+          </div>
+
+          <section class="tabs__panel" id="panel-orders" role="tabpanel" aria-labelledby="tab-orders" tabindex="0">
+            <ul class="orders-list" id="orders-list"></ul>
+            <div class="empty-state" id="orders-empty">
+              <p class="empty-state__title">Заявок пока нет</p>
+              <p class="empty-state__text">Нажмите «Заказать» в карточке товара — заявка появится здесь.</p>
+              <a class="button button--primary" href="catalog.html">Перейти в каталог</a>
+            </div>
+          </section>
+
+          <section class="tabs__panel" id="panel-favorites" role="tabpanel" aria-labelledby="tab-favorites" tabindex="0" hidden>
+            <ul class="favorites-grid" id="favorites-grid"></ul>
+            <div class="empty-state" id="favorites-empty">
+              <p class="empty-state__title">В избранном пусто</p>
+              <p class="empty-state__text">Нажмите на сердечко в карточке товара, чтобы сохранить его.</p>
+              <a class="button button--primary" href="catalog.html">Выбрать товары</a>
+            </div>
+          </section>
+
+          <section class="tabs__panel" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" tabindex="0" hidden>
+            <div class="order-card">
+              <h2 class="order-card__title">Данные профиля</h2>
+              <p class="form-note">Эти данные подставятся в формы заявки автоматически.</p>
+              <form class="order-form" id="profile-form" action="#" method="post" novalidate data-validate data-success="profile">
+                <p class="form-summary" role="alert" hidden></p>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="profile-name">Имя<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="profile-name" name="name" type="text" autocomplete="name" minlength="2" required data-error-required="Введите имя." data-error-short="Имя должно быть не короче двух букв.">
+      <p class="form-error" id="profile-name-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="profile-email">E-mail<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="profile-email" name="email" type="email" autocomplete="email" required data-error-required="Введите e-mail." data-error-type="Введите e-mail в формате name@example.com.">
+      <p class="form-error" id="profile-email-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="profile-phone">Телефон</label>
+      <input class="order-form__input" id="profile-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" data-error-pattern="Введите номер полностью: +7 (900) 000-00-00.">
+      <p class="form-error" id="profile-phone-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="profile-city">Город доставки</label>
+      <input class="order-form__input" id="profile-city" name="city" type="text" autocomplete="address-level2" placeholder="Москва">
+      <p class="form-error" id="profile-city-error" hidden></p>
+    </div>
+
+                <div class="order-form__actions order-form__group--wide">
+                  <button class="button button--primary" type="submit">Сохранить изменения</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="application/json" id="products-data">[{"id": 1, "name": "Sony PlayStation 5 Pro", "price": 79990, "priceText": "79 990 ₽", "category": "Консоли", "image": "images/tovar1-320.jpg", "alt": "Игровая консоль Sony PlayStation 5 Pro в белом корпусе"}, {"id": 2, "name": "Кроссовки Raf Simons Ozweego III", "price": 34990, "priceText": "34 990 ₽", "category": "Стиль", "image": "images/tovar2-320.jpg", "alt": "Кроссовки Raf Simons Ozweego III с чёрным верхом и красной подошвой"}, {"id": 3, "name": "Grand Theft Auto VI", "price": 6990, "priceText": "6 990 ₽", "category": "Игры", "image": "images/tovar3-320.jpg", "alt": "Обложка игры Grand Theft Auto VI"}, {"id": 4, "name": "Беспроводной геймпад Вольт G1", "price": 6490, "priceText": "6 490 ₽", "category": "Аксессуары", "image": "images/tovar4.svg", "alt": "Чёрный беспроводной геймпад с цветными кнопками"}, {"id": 5, "name": "Наушники Вольт H2", "price": 12990, "priceText": "12 990 ₽", "category": "Аудио", "image": "images/tovar5.svg", "alt": "Полноразмерные беспроводные наушники чёрного цвета"}, {"id": 6, "name": "Механическая клавиатура Вольт K87", "price": 8990, "priceText": "8 990 ₽", "category": "Аксессуары", "image": "images/tovar6.svg", "alt": "Механическая клавиатура без цифрового блока с цветными клавишами"}, {"id": 7, "name": "Игровая мышь Вольт M7", "price": 4490, "priceText": "4 490 ₽", "category": "Аксессуары", "image": "images/tovar7.svg", "alt": "Чёрная игровая мышь с боковыми кнопками"}, {"id": 8, "name": "Монитор Вольт 27″ QHD 165 Гц", "price": 27990, "priceText": "27 990 ₽", "category": "Мониторы", "image": "images/tovar8.svg", "alt": "Широкоформатный монитор на подставке"}, {"id": 9, "name": "Портативная колонка Вольт S1", "price": 5990, "priceText": "5 990 ₽", "category": "Аудио", "image": "images/tovar9.svg", "alt": "Портативная колонка с кнопками управления сверху"}]</script>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="logo logo--inverse" href="index.html" aria-label="Вольт — на главную">
+            <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="logo__text">Вольт</span>
+          </a>
+          <p class="site-footer__tagline">Игры, техника и вещи со&nbsp;стилем. Привозим по&nbsp;всей России, проверяем каждый заказ перед отправкой.</p>
+
+          <form class="subscribe" id="subscribe-form" action="#" method="post" novalidate>
+            <label class="subscribe__label" for="subscribe-email">Новинки и скидки раз в неделю</label>
+            <div class="subscribe__row">
+              <input class="subscribe__input" id="subscribe-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="subscribe-status">
+              <button class="button button--accent subscribe__button" type="submit">Подписаться</button>
+            </div>
+            <p class="subscribe__status" id="subscribe-status" role="status"></p>
+          </form>
+        </div>
+
+        <nav class="site-footer__column" aria-labelledby="footer-shop-title">
+          <h2 class="site-footer__title" id="footer-shop-title">Магазин</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+            <li><a class="site-footer__link" href="product.html">Товары</a></li>
+            <li><a class="site-footer__link" href="order.html">Заявка</a></li>
+            <li><a class="site-footer__link" href="account.html">Личный кабинет</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__column" aria-labelledby="footer-help-title">
+          <h2 class="site-footer__title" id="footer-help-title">Покупателям</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html#advantages">Доставка и гарантия</a></li>
+            <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+            <li><a class="site-footer__link" href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__column">
+          <h2 class="site-footer__title">Связаться</h2>
+          <ul class="site-footer__list site-footer__list--contacts">
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a class="site-footer__link" href="tel:+79000000000">+7 (900) 000‑00‑00</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a class="site-footer__link" href="mailto:info@example.com">info@example.com</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Москва, ул. Вольтова, 12</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно с 10:00 до 21:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 «Вольт». Все права защищены.</p>
+        <ul class="socials" aria-label="Мы в социальных сетях">
+          <li><a class="socials__link" href="https://t.me/" rel="noopener" aria-label="Telegram"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></a></li>
+          <li><a class="socials__link" href="https://vk.com/" rel="noopener" aria-label="ВКонтакте"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7c1 6 4.5 10 10 10v-4c2 0 3 2 4 4h3c-1-3-3-5-4-5 1-1 3-3 3.5-5h-3c-1 2-2.5 4-3.5 4V7h-3v6c-2 0-3.5-3-4-6z"/></svg></a></li>
+          <li><a class="socials__link" href="https://www.youtube.com/" rel="noopener" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a></li>
+        </ul>
+        <a class="site-footer__top-link" href="#top">Наверх <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
+    </div>
+    <p class="site-footer__wordmark" aria-hidden="true">Вольт</p>
+  </footer>
+
+  <a class="back-to-top" href="#top" aria-label="Вернуться наверх страницы"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+
+  <div class="chat" data-chat>
+    <section class="chat__panel" id="chat-panel" aria-labelledby="chat-title" hidden>
+      <header class="chat__header">
+        <span class="chat__avatar"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+        <div class="chat__heading">
+          <h2 class="chat__title" id="chat-title">Консультант «Вольт»</h2>
+          <p class="chat__status"><span class="chat__dot" aria-hidden="true"></span>Онлайн · ежедневно 10:00–21:00</p>
+        </div>
+        <button class="chat__close" type="button" aria-label="Закрыть чат"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </header>
+
+      <div class="chat__messages" id="chat-messages" role="log" aria-live="polite" aria-label="Сообщения чата" tabindex="0"></div>
+
+      <div class="chat__quick" role="group" aria-label="Быстрые вопросы">
+          <button class="chat__chip" type="button" data-question="Сроки доставки">Сроки доставки</button>
+          <button class="chat__chip" type="button" data-question="Как оплатить?">Как оплатить?</button>
+          <button class="chat__chip" type="button" data-question="Гарантия и возврат">Гарантия и возврат</button>
+          <button class="chat__chip" type="button" data-question="Помогите с выбором">Помогите с выбором</button>
+      </div>
+
+      <form class="chat__form" id="chat-form" action="#" method="post">
+        <label class="visually-hidden" for="chat-input">Ваше сообщение</label>
+        <input class="chat__input" id="chat-input" name="message" type="text" autocomplete="off" maxlength="300" placeholder="Напишите вопрос…">
+        <button class="chat__send" type="submit" aria-label="Отправить сообщение"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg></button>
+      </form>
+    </section>
+
+    <button class="chat__launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="Чат с консультантом">
+      <span class="chat__launcher-icon chat__launcher-icon--open"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+      <span class="chat__launcher-icon chat__launcher-icon--close"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      <span class="chat__badge" aria-hidden="true">1</span>
+    </button>
+  </div>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+</body>
+</html>
