@@ -3,253 +3,625 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Изображения, описания, цены и таблицы характеристик товаров учебного интернет-магазина.">
-  <title>Карточки товаров — Учебный интернет-магазин</title>
+  <meta name="description" content="Подробные описания, цены и таблицы характеристик всех товаров магазина «Вольт».">
+  <meta name="theme-color" content="#15161b">
+  <title>Товары и характеристики — Вольт</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Вольт">
+  <meta property="og:title" content="Товары и характеристики — Вольт">
+  <meta property="og:description" content="Подробные описания, цены и таблицы характеристик всех товаров магазина «Вольт».">
+  <meta property="og:image" content="https://shadowboyyy.github.io/kr1-html-css-shop/images/tovar1.jpeg">
+  <script>
+    document.documentElement.classList.add('js');
+    if (location.hash) document.documentElement.classList.add('is-anchor-load');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion-ready');
+      setTimeout(() => { if (!window.Motion) document.documentElement.classList.remove('motion-ready'); }, 2500);
+    }
+  </script>
+  <script src="js/vendor/motion.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/motion-effects.js" defer></script>
 </head>
-<body id="top">
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+<body class="page page--product" id="top">
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo site-header__logo" href="index.html" aria-label="Вольт — на главную">
+        <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="logo__text">Вольт</span>
+      </a>
+
+      <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+        <span class="site-header__toggle-icon site-header__toggle-icon--open"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+        <span class="site-header__toggle-icon site-header__toggle-icon--close"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="product.html" aria-current="page">Товары</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
+        <a class="site-nav__phone" href="tel:+79000000000"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+7 (900) 000‑00‑00</span></a>
       </nav>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
-  <main class="site-main">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Карточки товаров</span>
-    </nav>
-    <section class="section">
-      <h1 class="section__title">Карточки товаров</h1>
-      <p>Описание, цены и характеристики товаров из каталога.</p>
+  <main class="main" id="main">
+    <section class="page-hero" aria-labelledby="product-title">
+      <div class="container">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+          <li class="breadcrumbs__item"><span aria-current="page">Товары</span></li>
+        </ol>
+      </nav>
+        <h1 class="page-hero__title" id="product-title" data-hero-item>Товары и характеристики</h1>
+        <p class="page-hero__lead" data-hero-item>Описание, цена и подробная таблица характеристик каждого товара. Выберите позицию, чтобы перейти к ней.</p>
+      </div>
     </section>
 
-    <article class="section product-details" id="product-1">
-      <h2 class="product-details__title">Товар 1 — Sony PlayStation 5 Pro</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar1.jpeg" alt="Sony PlayStation 5 Pro" width="300" height="300">
+    <nav class="chips" aria-label="Товары на странице">
+      <div class="container">
+        <ul class="chips__list">
+          <li><a class="chips__link" href="#product-1">Sony PlayStation 5 Pro</a></li>
+          <li><a class="chips__link" href="#product-2">Кроссовки Raf Simons Ozweego III</a></li>
+          <li><a class="chips__link" href="#product-3">Grand Theft Auto VI</a></li>
+          <li><a class="chips__link" href="#product-4">Беспроводной геймпад Вольт G1</a></li>
+          <li><a class="chips__link" href="#product-5">Наушники Вольт H2</a></li>
+          <li><a class="chips__link" href="#product-6">Механическая клавиатура Вольт K87</a></li>
+          <li><a class="chips__link" href="#product-7">Игровая мышь Вольт M7</a></li>
+          <li><a class="chips__link" href="#product-8">Монитор Вольт 27″ QHD 165 Гц</a></li>
+          <li><a class="chips__link" href="#product-9">Портативная колонка Вольт S1</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <article class="product-details" id="product-1" aria-labelledby="product-1-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--hit">Хит</span>
+          <picture>
+  <source type="image/webp" srcset="images/tovar1-320.webp 320w, images/tovar1-447.webp 447w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw">
+  <img class="product-details__image" src="images/tovar1.jpeg" srcset="images/tovar1-320.jpg 320w, images/tovar1.jpeg 447w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw" alt="Игровая консоль Sony PlayStation 5 Pro в белом корпусе" width="447" height="447" loading="lazy" decoding="async">
+</picture>
+        </div>
         <div class="product-details__info">
-          <p>Sony PlayStation 5 Pro — это обновленная и самая мощная версия стационарной игровой консоли поколения, выпущенная для повышенной производительности в играх</p>
-          <p class="product-details__price">Цена: 1000 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 1</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Игровая консоль</td></tr>
-              <tr><th scope="row">Цена</th><td>1000 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Консоли · Sony</p>
+          <h2 class="product-details__title" id="product-1-title">Sony PlayStation 5 Pro</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>79 990 ₽</p>
+          <p class="product-details__text">PlayStation 5 Pro — флагманская версия консоли с усиленным графическим процессором. Игры выглядят чётче благодаря улучшенному масштабированию изображения, а трассировка лучей работает быстрее. В комплекте — беспроводной контроллер и накопитель на 2 ТБ.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Накопитель SSD 2 ТБ</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Поддержка 4K и 120 Гц</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Wi‑Fi 7</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-1-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-1-caption">Характеристики: Sony PlayStation 5 Pro</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Консоли</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Sony</td></tr>
+                  <tr><th scope="row">Память</th><td>SSD 2 ТБ</td></tr>
+                  <tr><th scope="row">Разрешение</th><td>до 4K, 120 Гц</td></tr>
+                  <tr><th scope="row">Цена</th><td>79 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Sony PlayStation 5 Pro" data-price="79 990 ₽" aria-label="Заказать: Sony PlayStation 5 Pro">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=1">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-2">
-      <h2 class="product-details__title">Товар 2 — Раф Симонс</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar2.jpeg" alt="Раф Симонс" width="300" height="300">
+    <article class="product-details" id="product-2" aria-labelledby="product-2-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <picture>
+  <source type="image/webp" srcset="images/tovar2-320.webp 320w, images/tovar2-577.webp 577w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw">
+  <img class="product-details__image" src="images/tovar2.jpeg" srcset="images/tovar2-320.jpg 320w, images/tovar2.jpeg 577w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw" alt="Кроссовки Raf Simons Ozweego III с чёрным верхом и красной подошвой" width="577" height="346" loading="lazy" decoding="async">
+</picture>
+        </div>
         <div class="product-details__info">
-          <p>Раф Симонс (Raf Simons, род. 12 января 1968 года) — знаменитый бельгийский модный дизайнер, один из самых влиятельных новаторов в современной индустрии одежды, который пришел в моду из промышленного дизайна и дизайна мебели.</p>
-          <p class="product-details__price">Цена: 1500 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 2</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Мода и дизайн</td></tr>
-              <tr><th scope="row">Цена</th><td>1500 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Стиль · Raf Simons</p>
+          <h2 class="product-details__title" id="product-2-title">Кроссовки Raf Simons Ozweego III</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>34 990 ₽</p>
+          <p class="product-details__text">Ozweego III — одна из самых узнаваемых моделей Раф Симонса, дизайнера, пришедшего в моду из промышленного дизайна. Массивная подошва, глянцевые вставки и контрастные цвета делают пару главным акцентом образа.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Верх из текстиля и кожи</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Амортизирующая подошва</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Размеры 39–45</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-2-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-2-caption">Характеристики: Кроссовки Raf Simons Ozweego III</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Стиль</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Raf Simons</td></tr>
+                  <tr><th scope="row">Материал</th><td>Текстиль, натуральная кожа</td></tr>
+                  <tr><th scope="row">Размеры</th><td>39–45</td></tr>
+                  <tr><th scope="row">Цена</th><td>34 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Кроссовки Raf Simons Ozweego III" data-price="34 990 ₽" aria-label="Заказать: Кроссовки Raf Simons Ozweego III">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=2">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-3">
-      <h2 class="product-details__title">Товар 3 — Grand Theft Auto VI</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar3.jpeg" alt="Grand Theft Auto VI" width="300" height="300">
+    <article class="product-details" id="product-3" aria-labelledby="product-3-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--sale">Акция</span>
+          <picture>
+  <source type="image/webp" srcset="images/tovar3-320.webp 320w, images/tovar3-480.webp 480w, images/tovar3-739.webp 739w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw">
+  <img class="product-details__image" src="images/tovar3.jpeg" srcset="images/tovar3-320.jpg 320w, images/tovar3-480.jpg 480w, images/tovar3.jpeg 739w" sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 92vw" alt="Обложка игры Grand Theft Auto VI" width="739" height="415" loading="lazy" decoding="async">
+</picture>
+        </div>
         <div class="product-details__info">
-          <p>Grand Theft Auto VI (GTA 6) — это ожидаемая компьютерная игра в жанре action-adventure с открытым миром от студии Rockstar Games, выход которой запланирован на 19 ноября 2026 года для консолей PlayStation 5 и Xbox Series X/S</p>
-          <p class="product-details__price">Цена: 2000 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 3</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Видеоигра</td></tr>
-              <tr><th scope="row">Цена</th><td>2000 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Игры · Rockstar Games</p>
+          <h2 class="product-details__title" id="product-3-title">Grand Theft Auto VI</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>6 990 ₽ <s class="product-details__price-old"><span class="visually-hidden">Старая цена: </span>7 990 ₽</s></p>
+          <p class="product-details__text">Grand Theft Auto VI возвращает серию в Вайс-Сити и окрестности штата Леонида. Два главных героя, живой открытый мир и сюжет, который подстраивается под ваш стиль игры. Цифровой ключ приходит на почту сразу после подтверждения заказа.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Цифровой ключ</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Русские субтитры</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>PS5 и Xbox Series X|S</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-3-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-3-caption">Характеристики: Grand Theft Auto VI</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Игры</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Rockstar Games</td></tr>
+                  <tr><th scope="row">Платформы</th><td>PS5, Xbox Series X|S</td></tr>
+                  <tr><th scope="row">Формат</th><td>Цифровой ключ</td></tr>
+                  <tr><th scope="row">Цена</th><td>6 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Grand Theft Auto VI" data-price="6 990 ₽" aria-label="Заказать: Grand Theft Auto VI">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=3">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-4">
-      <h2 class="product-details__title">Товар 4 — Беспроводной геймпад</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar4.svg" alt="Беспроводной геймпад" width="300" height="300">
+    <article class="product-details" id="product-4" aria-labelledby="product-4-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--hit">Хит</span>
+          <img class="product-details__image" src="images/tovar4.svg" alt="Чёрный беспроводной геймпад с цветными кнопками" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Беспроводной геймпад — это игровой контроллер, который позволяет управлять персонажем и взаимодействовать с игровым миром без использования клавиатуры. На корпусе расположены кнопки, два стика и крестовина, а удобная форма помогает держать устройство в руках во время прохождения игр.</p>
-          <p class="product-details__price">Цена: 2500 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 4</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Игровые аксессуары</td></tr>
-              <tr><th scope="row">Цена</th><td>2500 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Аксессуары · Вольт</p>
+          <h2 class="product-details__title" id="product-4-title">Беспроводной геймпад Вольт G1</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>6 490 ₽</p>
+          <p class="product-details__text">Геймпад Вольт G1 подключается к ПК, консолям и смартфонам по Bluetooth или через USB‑C. Стики на датчиках Холла не дрейфуют со временем, а прорезиненные рукоятки не скользят даже в долгих сессиях.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Стики на датчиках Холла</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>До 30 часов работы</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Bluetooth 5.3 и USB‑C</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-4-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-4-caption">Характеристики: Беспроводной геймпад Вольт G1</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Аксессуары</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Подключение</th><td>Bluetooth 5.3, USB‑C</td></tr>
+                  <tr><th scope="row">Автономность</th><td>до 30 часов</td></tr>
+                  <tr><th scope="row">Цена</th><td>6 490 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Беспроводной геймпад Вольт G1" data-price="6 490 ₽" aria-label="Заказать: Беспроводной геймпад Вольт G1">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=4">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-5">
-      <h2 class="product-details__title">Товар 5 — Беспроводные наушники</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar5.svg" alt="Беспроводные наушники" width="300" height="300">
+    <article class="product-details" id="product-5" aria-labelledby="product-5-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <img class="product-details__image" src="images/tovar5.svg" alt="Полноразмерные беспроводные наушники чёрного цвета" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Беспроводные наушники — это устройство для прослушивания музыки, просмотра фильмов и общения без подключения через провод. Модель из учебного каталога выполнена в полноразмерном корпусе с мягкими амбушюрами и регулируемым оголовьем, чтобы её было удобно использовать дома, на учёбе или во время игры.</p>
-          <p class="product-details__price">Цена: 3000 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 5</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Аудиотехника</td></tr>
-              <tr><th scope="row">Цена</th><td>3000 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Аудио · Вольт</p>
+          <h2 class="product-details__title" id="product-5-title">Наушники Вольт H2</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>12 990 ₽</p>
+          <p class="product-details__text">Вольт H2 — полноразмерная модель для музыки, фильмов и игр. Активное шумоподавление убирает гул транспорта, а режим прозрачности позволяет слышать окружение. Регулируемое оголовье и мягкие амбушюры не давят даже через несколько часов.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Активное шумоподавление</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>До 40 часов работы</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Быстрая зарядка USB‑C</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-5-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-5-caption">Характеристики: Наушники Вольт H2</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Аудио</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Шумоподавление</th><td>Активное, 3 режима</td></tr>
+                  <tr><th scope="row">Автономность</th><td>до 40 часов</td></tr>
+                  <tr><th scope="row">Цена</th><td>12 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Наушники Вольт H2" data-price="12 990 ₽" aria-label="Заказать: Наушники Вольт H2">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=5">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-6">
-      <h2 class="product-details__title">Товар 6 — Механическая клавиатура</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar6.svg" alt="Механическая клавиатура" width="300" height="300">
+    <article class="product-details" id="product-6" aria-labelledby="product-6-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--sale">Акция</span>
+          <img class="product-details__image" src="images/tovar6.svg" alt="Механическая клавиатура без цифрового блока с цветными клавишами" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Механическая клавиатура — это устройство ввода, в котором под каждой клавишей находится отдельный переключатель. Такая конструкция даёт ощутимый отклик при нажатии. Клавиатура подходит для набора текста, написания кода и компьютерных игр, а подсветка помогает различать клавиши при слабом освещении.</p>
-          <p class="product-details__price">Цена: 3500 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 6</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Компьютерные аксессуары</td></tr>
-              <tr><th scope="row">Цена</th><td>3500 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Аксессуары · Вольт</p>
+          <h2 class="product-details__title" id="product-6-title">Механическая клавиатура Вольт K87</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>8 990 ₽ <s class="product-details__price-old"><span class="visually-hidden">Старая цена: </span>10 990 ₽</s></p>
+          <p class="product-details__text">K87 — клавиатура без цифрового блока, которая освобождает место для мыши. Переключатели меняются без пайки, а подсветка настраивается для каждой клавиши. Подходит для набора текста, работы с кодом и игр.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Горячая замена свитчей</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>RGB‑подсветка</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Формат TKL, 87 клавиш</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-6-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-6-caption">Характеристики: Механическая клавиатура Вольт K87</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Аксессуары</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Переключатели</th><td>Линейные, hot‑swap</td></tr>
+                  <tr><th scope="row">Формат</th><td>TKL, 87 клавиш</td></tr>
+                  <tr><th scope="row">Цена</th><td>8 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>Осталось мало</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Механическая клавиатура Вольт K87" data-price="8 990 ₽" aria-label="Заказать: Механическая клавиатура Вольт K87">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=6">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-7">
-      <h2 class="product-details__title">Товар 7 — Игровая мышь</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar7.svg" alt="Игровая мышь" width="300" height="300">
+    <article class="product-details" id="product-7" aria-labelledby="product-7-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--hit">Хит</span>
+          <img class="product-details__image" src="images/tovar7.svg" alt="Чёрная игровая мышь с боковыми кнопками" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Игровая мышь — это устройство для управления курсором, рассчитанное на работу за компьютером и прохождение игр. Модель из учебного каталога имеет колесо прокрутки и дополнительные боковые кнопки. Форма корпуса позволяет удобно расположить ладонь при работе с документами, браузером или игровыми приложениями.</p>
-          <p class="product-details__price">Цена: 1200 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 7</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Компьютерные аксессуары</td></tr>
-              <tr><th scope="row">Цена</th><td>1200 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Аксессуары · Вольт</p>
+          <h2 class="product-details__title" id="product-7-title">Игровая мышь Вольт M7</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>4 490 ₽</p>
+          <p class="product-details__text">Мышь Вольт M7 весит всего 59 граммов и уверенно скользит по коврику. Сенсор с разрешением до 26 000 DPI отслеживает самые быстрые движения, а боковые кнопки можно настроить под любые команды.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Вес 59 г</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Сенсор до 26 000 DPI</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>6 программируемых кнопок</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-7-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-7-caption">Характеристики: Игровая мышь Вольт M7</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Аксессуары</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Сенсор</th><td>Оптический, до 26 000 DPI</td></tr>
+                  <tr><th scope="row">Вес</th><td>59 г</td></tr>
+                  <tr><th scope="row">Цена</th><td>4 490 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Игровая мышь Вольт M7" data-price="4 490 ₽" aria-label="Заказать: Игровая мышь Вольт M7">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=7">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-8">
-      <h2 class="product-details__title">Товар 8 — Монитор</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar8.svg" alt="Монитор" width="300" height="300">
+    <article class="product-details" id="product-8" aria-labelledby="product-8-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <img class="product-details__image" src="images/tovar8.svg" alt="Широкоформатный монитор на подставке" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Монитор — это устройство, которое выводит изображение с компьютера и позволяет работать с программами, смотреть видео и запускать игры. Модель из учебного каталога представлена с широким экраном и настольной подставкой. На таком экране удобно размещать окно браузера, редактор кода и учебные материалы.</p>
-          <p class="product-details__price">Цена: 4500 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 8</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Компьютерная техника</td></tr>
-              <tr><th scope="row">Цена</th><td>4500 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Мониторы · Вольт</p>
+          <h2 class="product-details__title" id="product-8-title">Монитор Вольт 27″ QHD 165 Гц</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>27 990 ₽</p>
+          <p class="product-details__text">На мониторе Вольт 27″ удобно одновременно держать открытыми браузер, редактор и мессенджер. Частота 165 Гц делает картинку в играх плавной, а заводская калибровка — точной при работе с фото и видео.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>IPS, 2560×1440</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>165 Гц, 1 мс</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Регулировка высоты</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-8-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-8-caption">Характеристики: Монитор Вольт 27″ QHD 165 Гц</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Мониторы</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Матрица</th><td>IPS, 2560×1440</td></tr>
+                  <tr><th scope="row">Частота</th><td>165 Гц</td></tr>
+                  <tr><th scope="row">Цена</th><td>27 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>Под заказ, 2–3 дня</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Монитор Вольт 27″ QHD 165 Гц" data-price="27 990 ₽" aria-label="Заказать: Монитор Вольт 27″ QHD 165 Гц">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=8">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <article class="section product-details" id="product-9">
-      <h2 class="product-details__title">Товар 9 — Портативная колонка</h2>
-      <div class="product-details__layout">
-        <img class="product-details__image" src="images/tovar9.svg" alt="Портативная колонка" width="300" height="300">
+    <article class="product-details" id="product-9" aria-labelledby="product-9-title">
+      <div class="container product-details__layout" data-reveal>
+        <div class="product-details__media">
+          <span class="product-card__badge product-card__badge--sale">Акция</span>
+          <img class="product-details__image" src="images/tovar9.svg" alt="Портативная колонка с кнопками управления сверху" width="600" height="450" loading="lazy" decoding="async">
+        </div>
         <div class="product-details__info">
-          <p>Портативная колонка — это компактная акустическая система для воспроизведения музыки и другого звука с телефона или компьютера. В учебном каталоге представлена беспроводная модель с кнопками управления на корпусе. Колонку можно поставить на рабочий стол или взять с собой, когда хочется послушать музыку вместе с друзьями.</p>
-          <p class="product-details__price">Цена: 1800 руб.</p>
-          <table class="product-table">
-            <caption class="product-table__caption">Характеристики товара 9</caption>
-            <thead>
-              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Категория</th><td>Аудиотехника</td></tr>
-              <tr><th scope="row">Цена</th><td>1800 руб.</td></tr>
-              <tr><th scope="row">Наличие</th><td>Учебный пример</td></tr>
-            </tbody>
-          </table>
-          <a class="button button--primary" href="order.html">Оставить заявку</a>
+          <p class="product-details__category">Аудио · Вольт</p>
+          <h2 class="product-details__title" id="product-9-title">Портативная колонка Вольт S1</h2>
+          <p class="product-details__price"><span class="visually-hidden">Цена: </span>5 990 ₽ <s class="product-details__price-old"><span class="visually-hidden">Старая цена: </span>6 990 ₽</s></p>
+          <p class="product-details__text">Вольт S1 помещается в рюкзак и не боится дождя и брызг. Две колонки можно объединить в стереопару, а встроенный микрофон позволяет отвечать на звонки, не доставая телефон.</p>
+          <ul class="product-details__features">
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Защита IP67</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>До 20 часов работы</li>
+              <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 5 5 9-10"/></svg>Режим стереопары</li>
+          </ul>
+
+          <div class="table-wrapper" role="region" aria-labelledby="product-9-caption" tabindex="0">
+            <table class="product-table">
+              <caption class="product-table__caption" id="product-9-caption">Характеристики: Портативная колонка Вольт S1</caption>
+              <thead>
+                <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+              </thead>
+              <tbody>
+                  <tr><th scope="row">Категория</th><td>Аудио</td></tr>
+                  <tr><th scope="row">Бренд</th><td>Вольт</td></tr>
+                  <tr><th scope="row">Защита</th><td>IP67</td></tr>
+                  <tr><th scope="row">Автономность</th><td>до 20 часов</td></tr>
+                  <tr><th scope="row">Цена</th><td>5 990 ₽</td></tr>
+                  <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                  <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                  <tr><th scope="row">Доставка</th><td>Москва — 1 день, Россия — от 2 дней</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="product-details__actions">
+            <button class="button button--primary" type="button" data-product="Портативная колонка Вольт S1" data-price="5 990 ₽" aria-label="Заказать: Портативная колонка Вольт S1">Заказать</button>
+            <a class="button button--ghost" href="order.html?product=9">Оформить на странице заявки</a>
+          </div>
         </div>
       </div>
     </article>
-
   </main>
 
   <footer class="site-footer">
-    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="logo logo--inverse" href="index.html" aria-label="Вольт — на главную">
+            <span class="logo__mark"><svg class="logo__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="logo__text">Вольт</span>
+          </a>
+          <p class="site-footer__tagline">Игры, техника и вещи со&nbsp;стилем. Привозим по&nbsp;всей России, проверяем каждый заказ перед отправкой.</p>
+
+          <form class="subscribe" id="subscribe-form" action="#" method="post" novalidate>
+            <label class="subscribe__label" for="subscribe-email">Новинки и скидки раз в неделю</label>
+            <div class="subscribe__row">
+              <input class="subscribe__input" id="subscribe-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="subscribe-status">
+              <button class="button button--accent subscribe__button" type="submit">Подписаться</button>
+            </div>
+            <p class="subscribe__status" id="subscribe-status" role="status"></p>
+          </form>
+        </div>
+
+        <nav class="site-footer__column" aria-labelledby="footer-shop-title">
+          <h2 class="site-footer__title" id="footer-shop-title">Магазин</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+            <li><a class="site-footer__link" href="product.html">Товары</a></li>
+            <li><a class="site-footer__link" href="order.html">Заявка</a></li>
+            <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__column" aria-labelledby="footer-help-title">
+          <h2 class="site-footer__title" id="footer-help-title">Покупателям</h2>
+          <ul class="site-footer__list">
+            <li><a class="site-footer__link" href="index.html#advantages">Доставка и гарантия</a></li>
+            <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+            <li><a class="site-footer__link" href="index.html#reviews">Отзывы</a></li>
+            <li><a class="site-footer__link" href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__column">
+          <h2 class="site-footer__title">Связаться</h2>
+          <ul class="site-footer__list site-footer__list--contacts">
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a class="site-footer__link" href="tel:+79000000000">+7 (900) 000‑00‑00</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a class="site-footer__link" href="mailto:info@example.com">info@example.com</a></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Москва, ул. Вольтова, 12</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно с 10:00 до 21:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 «Вольт». Все права защищены.</p>
+        <ul class="socials" aria-label="Мы в социальных сетях">
+          <li><a class="socials__link" href="https://t.me/" rel="noopener" aria-label="Telegram"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></a></li>
+          <li><a class="socials__link" href="https://vk.com/" rel="noopener" aria-label="ВКонтакте"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7c1 6 4.5 10 10 10v-4c2 0 3 2 4 4h3c-1-3-3-5-4-5 1-1 3-3 3.5-5h-3c-1 2-2.5 4-3.5 4V7h-3v6c-2 0-3.5-3-4-6z"/></svg></a></li>
+          <li><a class="socials__link" href="https://www.youtube.com/" rel="noopener" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a></li>
+        </ul>
+        <a class="site-footer__top-link" href="#top">Наверх <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
+    </div>
+    <p class="site-footer__wordmark" aria-hidden="true">Вольт</p>
   </footer>
-  <a class="button button--primary back-to-top" href="#top">Наверх</a>
+
+  <a class="back-to-top" href="#top" aria-label="Вернуться наверх страницы"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-product">
+    <div class="order-dialog__header">
+      <div>
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <p class="order-dialog__product" id="order-dialog-product">Товар не выбран</p>
+      </div>
+      <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+
+    <form class="order-form" id="dialog-form" action="#" method="post" novalidate data-validate data-success="dialog">
+      <p class="form-summary" role="alert" hidden></p>
+      <p class="form-note order-form__group--wide">Поля, отмеченные звёздочкой (<span aria-hidden="true">*</span>), обязательны для заполнения.</p>
+      <input id="dialog-selected-product" name="product" type="hidden">
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-name">Имя<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-name" name="name" type="text" autocomplete="name" minlength="2" required data-error-required="Введите имя." data-error-short="Имя должно быть не короче двух букв.">
+      <p class="form-error" id="dialog-name-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-phone">Телефон<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" aria-describedby="dialog-phone-hint" required data-error-required="Введите номер телефона." data-error-pattern="Введите номер полностью: +7 (900) 000-00-00.">
+      <p class="order-form__hint" id="dialog-phone-hint">Формат: +7 (900) 000-00-00</p>
+      <p class="form-error" id="dialog-phone-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-email">E-mail<span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="dialog-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required data-error-required="Введите e-mail." data-error-type="Введите e-mail в формате name@example.com.">
+      <p class="form-error" id="dialog-email-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-topic">Тема заявки<span class="order-form__required" aria-hidden="true">*</span></label>
+      <select class="order-form__select" id="dialog-topic" name="topic" required data-error-required="Выберите тему заявки.">
+        <option value="">Выберите тему</option>
+        <option value="product">Заказ товара</option>
+        <option value="consultation">Консультация</option>
+        <option value="delivery">Доставка</option>
+      </select>
+      <p class="form-error" id="dialog-topic-error" hidden></p>
+    </div>
+
+    <div class="order-form__group">
+      <label class="order-form__label" for="dialog-date">Удобная дата связи</label>
+      <input class="order-form__input" id="dialog-date" name="date" type="date">
+      <p class="form-error" id="dialog-date-error" hidden></p>
+    </div>
+
+    <div class="order-form__group order-form__group--wide">
+      <label class="order-form__label" for="dialog-comment">Комментарий</label>
+      <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="4" placeholder="Цвет, размер, удобное время доставки"></textarea>
+      <p class="form-error" id="dialog-comment-error" hidden></p>
+    </div>
+
+    <div class="order-form__group order-form__group--wide order-form__group--checkbox">
+      <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" required data-error-required="Подтвердите согласие на обработку данных.">
+      <label class="order-form__label order-form__label--inline" for="dialog-agreement">Согласен на обработку персональных данных<span class="order-form__required" aria-hidden="true">*</span></label>
+      <p class="form-error" id="dialog-agreement-error" hidden></p>
+    </div>
+
+      <div class="order-form__actions order-form__group--wide">
+        <button class="button button--ghost" type="button" data-close-dialog>Отмена</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
 </body>
 </html>

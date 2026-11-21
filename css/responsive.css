@@ -1,0 +1,350 @@
+/*
+  Адаптивные стили для контрольной работы №3.
+  Подход: Mobile First.
+  Базовые стили рассчитаны на мобильный экран.
+  Расширения добавляются через min-width медиазапросы.
+
+  Контрольные ширины: 360px, 430px, 768px, 1024px, 1440px.
+*/
+
+/* ---------- Базовые адаптивные правила ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* При открытии страницы по якорю прокручиваем сразу, без анимации */
+html.is-anchor-load {
+  scroll-behavior: auto;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(48px, 8vw, 96px);
+}
+
+/* ---------- Маленькие телефоны (до 400px) ---------- */
+
+@media (max-width: 399px) {
+  .hero__actions .button {
+    width: 100%;
+  }
+
+  .hero__sticker {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero__sticker span {
+    font-size: 18px;
+  }
+
+  .product-card__footer .button {
+    width: 100%;
+  }
+}
+
+/* ---------- Крупные телефоны: от 480px ---------- */
+
+@media (min-width: 480px) {
+  .stats__grid {
+    gap: var(--space-2xl) var(--space-xl);
+  }
+
+  .map {
+    min-height: 380px;
+  }
+}
+
+/* ---------- Небольшие планшеты: от 640px ---------- */
+
+@media (min-width: 640px) {
+  .products-grid,
+  .features,
+  .contact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-dialog__header {
+    padding: var(--space-xl) var(--space-xl) var(--space-md);
+  }
+
+  .order-dialog .order-form {
+    padding: var(--space-lg) var(--space-xl) var(--space-xl);
+  }
+}
+
+/* ---------- Планшеты: от 768px ---------- */
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  /* Навигация: меню в строку, кнопка-бургер скрыта */
+  .js .site-header__toggle {
+    display: none;
+  }
+
+  .site-nav,
+  .js .site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-basis: auto;
+  }
+
+  .site-header__inner {
+    flex-wrap: nowrap;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+  }
+
+  .site-nav__phone {
+    display: none;
+  }
+
+  .back-to-top {
+    right: 32px;
+    bottom: 32px;
+  }
+
+  /* Форма: две колонки, широкие поля на всю строку */
+  .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg) var(--space-md);
+  }
+
+  .order-form__group--wide,
+  .order-form .form-summary,
+  .order-form .form-note {
+    grid-column: 1 / -1;
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .site-footer__top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .product-details__layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .product-details__media {
+    position: sticky;
+    top: calc(var(--header-height) + 80px);
+  }
+}
+
+/* ---------- Hero: две колонки от 900px ---------- */
+
+@media (min-width: 900px) {
+  .hero {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 500px);
+  }
+
+  .hero__sticker {
+    top: -24px;
+    right: -16px;
+    width: 112px;
+    height: 112px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .order-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+
+  .order-aside {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+  }
+
+  .contacts-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .map {
+    height: 100%;
+    min-height: 480px;
+  }
+}
+
+/* ---------- Небольшой desktop: от 1024px ---------- */
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .products-grid--catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .features,
+  .contact-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Каталог: фильтр слева, товары справа */
+  .catalog-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-xl);
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+    order: initial;
+    max-height: calc(100vh - var(--header-height) - 48px);
+    overflow-y: auto;
+  }
+
+  .js .catalog-filters__toggle {
+    display: none;
+  }
+
+  .filters-form[hidden] {
+    display: grid;
+  }
+
+  .site-nav__phone {
+    display: inline-flex;
+    margin: 0;
+    padding: 0 0 0 var(--space-md);
+    border-left: 1px solid var(--color-border);
+  }
+
+  .site-footer__top {
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: auto;
+  }
+
+  .faq {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .faq .section__head {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+  }
+}
+
+/* ---------- Широкий desktop: от 1280px ---------- */
+
+@media (min-width: 1280px) {
+  .products-grid--catalog {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) 520px;
+    gap: var(--space-3xl);
+  }
+}
+
+/* ---------- Широкие экраны: от 1440px ---------- */
+
+@media (min-width: 1440px) {
+  .container {
+    width: min(100% - 64px, 1280px);
+  }
+
+  .products-grid:not(.products-grid--catalog) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Плавные переходы между страницами ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+/* ---------- Уменьшение движения ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* ---------- Печать ---------- */
+
+@media print {
+  .site-header,
+  .back-to-top,
+  .marquee,
+  .site-footer__wordmark,
+  .order-dialog,
+  .toast {
+    display: none !important;
+  }
+}

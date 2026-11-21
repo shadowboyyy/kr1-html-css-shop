@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
-  <title id="title">Портативная колонка</title>
-  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
-  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="87" y="44" width="126" height="216" rx="26" fill="#eef5ff"/>
-    <circle cx="150" cy="117" r="29"/><circle cx="150" cy="192" r="39"/><circle cx="150" cy="192" r="15" fill="#0057b8"/>
-    <path d="M130 64h9m15 0h15" stroke-width="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450" role="img" aria-label="Портативная колонка">
+  <ellipse cx="300" cy="372" rx="200" ry="16" fill="#15161b" opacity=".08"/>
+  <rect x="100" y="130" width="400" height="230" rx="110" fill="#15161b"/>
+  <rect x="124" y="152" width="352" height="186" rx="93" fill="#2a2c35"/>
+  <g fill="#3a3d48">
+    <circle cx="190" cy="214" r="7"/><circle cx="220" cy="214" r="7"/><circle cx="250" cy="214" r="7"/><circle cx="280" cy="214" r="7"/><circle cx="310" cy="214" r="7"/><circle cx="340" cy="214" r="7"/><circle cx="370" cy="214" r="7"/><circle cx="400" cy="214" r="7"/>
+    <circle cx="175" cy="245" r="7"/><circle cx="205" cy="245" r="7"/><circle cx="235" cy="245" r="7"/><circle cx="265" cy="245" r="7"/><circle cx="295" cy="245" r="7"/><circle cx="325" cy="245" r="7"/><circle cx="355" cy="245" r="7"/><circle cx="385" cy="245" r="7"/><circle cx="415" cy="245" r="7"/>
+    <circle cx="190" cy="276" r="7"/><circle cx="220" cy="276" r="7"/><circle cx="250" cy="276" r="7"/><circle cx="280" cy="276" r="7"/><circle cx="310" cy="276" r="7"/><circle cx="340" cy="276" r="7"/><circle cx="370" cy="276" r="7"/><circle cx="400" cy="276" r="7"/>
   </g>
+  <rect x="240" y="104" width="120" height="30" rx="15" fill="#3d2fd6"/>
+  <circle cx="270" cy="119" r="6" fill="#e9e6ff"/><circle cx="300" cy="119" r="6" fill="#c8f03c"/><circle cx="330" cy="119" r="6" fill="#e9e6ff"/>
 </svg>

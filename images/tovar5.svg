@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title">
-  <title id="title">Беспроводные наушники</title>
-  <rect width="300" height="300" rx="12" fill="#f7f7f7"/>
-  <g fill="none" stroke="#0057b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M71 164v-29a79 79 0 0 1 158 0v29" stroke-width="15"/>
-    <rect x="58" y="145" width="43" height="82" rx="18" fill="#eef5ff"/><rect x="199" y="145" width="43" height="82" rx="18" fill="#eef5ff"/>
-    <path d="M78 160v49m144-49v49" stroke-width="8"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450" role="img" aria-label="Беспроводные наушники">
+  <ellipse cx="300" cy="392" rx="170" ry="16" fill="#15161b" opacity=".08"/>
+  <path d="M170 250v-40c0-72 58-130 130-130s130 58 130 130v40" fill="none" stroke="#15161b" stroke-width="26" stroke-linecap="round"/>
+  <path d="M190 118c28-26 66-42 110-42s82 16 110 42" fill="none" stroke="#3d2fd6" stroke-width="10" stroke-linecap="round"/>
+  <rect x="128" y="226" width="92" height="150" rx="40" fill="#15161b"/>
+  <rect x="380" y="226" width="92" height="150" rx="40" fill="#15161b"/>
+  <rect x="196" y="246" width="40" height="110" rx="20" fill="#e9e6ff"/>
+  <rect x="364" y="246" width="40" height="110" rx="20" fill="#e9e6ff"/>
+  <circle cx="162" cy="300" r="10" fill="#c8f03c"/>
+  <circle cx="438" cy="300" r="10" fill="#3d2fd6"/>
 </svg>

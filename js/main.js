@@ -1,82 +1,445 @@
-// Получаем модальное окно по id.
-const orderDialog = document.getElementById('order-dialog');
+// Отмечаем, что JavaScript доступен: от этого зависят стили меню и фильтров.
+document.documentElement.classList.add('js');
 
-// Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('button[data-product]');
+const motionApi = () => window.siteMotion || {};
 
-// Получаем кнопку закрытия модального окна.
-const closeDialogButton = document.getElementById('close-order-dialog');
+/* ---------- Уведомление внизу экрана ---------- */
 
-// Получаем скрытое поле, в которое будет записан выбранный товар.
-const selectedProductInput = document.getElementById('selected-product');
+const toast = document.getElementById('toast');
+let toastTimer;
 
-// Перебираем все кнопки «Заказать».
-orderButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    // Получаем название товара из data-атрибута.
-    const productName = button.dataset.product;
-
-    // Записываем название товара в скрытое поле формы.
-    selectedProductInput.value = productName;
-
-    // Убираем сообщение о предыдущей заявке.
-    successMessage.hidden = true;
-
-    // Открываем модальное окно.
-    orderDialog.showModal();
-  });
-});
-
-// Закрываем модальное окно по кнопке «Закрыть».
-if (closeDialogButton && orderDialog) {
-  closeDialogButton.addEventListener('click', () => {
-    orderDialog.close();
-  });
+function showToast(text) {
+  if (!toast) return;
+  toast.textContent = text;
+  toast.classList.add('toast--visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('toast--visible');
+    setTimeout(() => { toast.textContent = ''; }, 500);
+  }, 4500);
 }
 
-// Получаем форму заявки.
-const orderForm = document.getElementById('order-form');
+/* ---------- Шапка: мобильное меню и тень при прокрутке ---------- */
 
-// Получаем сообщение об успешной отправке.
-const successMessage = document.getElementById('success-message');
+const header = document.querySelector('.site-header');
+const navToggle = document.querySelector('.site-header__toggle');
+const siteNav = document.getElementById('site-nav');
+const desktopQuery = window.matchMedia('(min-width: 768px)');
 
-// Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  // Отменяем стандартную отправку формы,
-  // потому что backend пока не подключён.
-  event.preventDefault();
-  successMessage.hidden = true;
+function setNavOpen(open) {
+  if (!navToggle || !header) return;
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  header.classList.toggle('nav-open', open);
+  if (open && motionApi().openNav) motionApi().openNav(siteNav);
+}
 
-  // Сбрасываем предыдущие признаки ошибок.
-  const formElements = Array.from(orderForm.elements);
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', () => {
+    setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
 
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
+  siteNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setNavOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      setNavOpen(false);
+      navToggle.focus();
     }
   });
 
-  // Проверяем встроенные HTML-ограничения формы.
-  if (!orderForm.checkValidity()) {
-    formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
+  desktopQuery.addEventListener('change', (event) => {
+    if (event.matches) setNavOpen(false);
+  });
+}
+
+const backToTop = document.querySelector('.back-to-top');
+
+function onScroll() {
+  const y = window.scrollY;
+  if (header) header.classList.toggle('site-header--scrolled', y > 8);
+  if (backToTop) backToTop.classList.toggle('back-to-top--visible', y > 700);
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Маска телефона: +7 (900) 000-00-00 ---------- */
+
+function formatPhone(value) {
+  let digits = value.replace(/\D/g, '');
+  if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+  if (!digits.startsWith('7')) digits = '7' + digits;
+  digits = digits.slice(0, 11);
+
+  const rest = digits.slice(1);
+  let result = '+7';
+  if (rest.length > 0) result += ' (' + rest.slice(0, 3);
+  if (rest.length >= 3) result += ')';
+  if (rest.length > 3) result += ' ' + rest.slice(3, 6);
+  if (rest.length > 6) result += '-' + rest.slice(6, 8);
+  if (rest.length > 8) result += '-' + rest.slice(8, 10);
+  return result;
+}
+
+document.querySelectorAll('input[type="tel"]').forEach((input) => {
+  input.addEventListener('input', () => {
+    const atEnd = input.selectionStart === input.value.length;
+    if (input.value.replace(/\D/g, '') === '') {
+      input.value = '';
+      return;
+    }
+    // Если цифры ввели перед «+7», переносим их в конец номера.
+    const raw = input.value;
+    const prefixAt = raw.indexOf('+7');
+    const normalized = prefixAt > 0 ? raw.slice(prefixAt) + raw.slice(0, prefixAt) : raw;
+    input.value = formatPhone(normalized);
+    if (atEnd) input.setSelectionRange(input.value.length, input.value.length);
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value) return;
+    input.value = '+7 (';
+    // Ставим курсор в конец, чтобы цифры вводились после кода страны.
+    requestAnimationFrame(() => input.setSelectionRange(input.value.length, input.value.length));
+  });
+
+  input.addEventListener('blur', () => {
+    if (input.value === '+7 (' || input.value === '+7') input.value = '';
+  });
+});
+
+/* ---------- Проверка форм с текстовыми сообщениями об ошибках ---------- */
+
+function errorText(field) {
+  const v = field.validity;
+  if (v.valueMissing) return field.dataset.errorRequired || 'Заполните это поле.';
+  if (v.typeMismatch) return field.dataset.errorType || 'Проверьте формат значения.';
+  if (v.patternMismatch) return field.dataset.errorPattern || 'Проверьте формат значения.';
+  if (v.tooShort) return field.dataset.errorShort || `Минимальная длина — ${field.minLength} символа.`;
+  return field.validationMessage;
+}
+
+function describedBy(field, id, add) {
+  const ids = new Set((field.getAttribute('aria-describedby') || '').split(' ').filter(Boolean));
+  if (add) ids.add(id); else ids.delete(id);
+  if (ids.size) field.setAttribute('aria-describedby', [...ids].join(' '));
+  else field.removeAttribute('aria-describedby');
+}
+
+function validateField(field) {
+  const error = document.getElementById(`${field.id}-error`);
+  const valid = field.checkValidity();
+
+  if (valid) {
+    field.removeAttribute('aria-invalid');
+    if (error) {
+      error.hidden = true;
+      error.textContent = '';
+      describedBy(field, error.id, false);
+    }
+  } else {
+    field.setAttribute('aria-invalid', 'true');
+    if (error) {
+      error.textContent = errorText(field);
+      error.hidden = false;
+      describedBy(field, error.id, true);
+    }
+  }
+  return valid;
+}
+
+function pluralErrors(n) {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return `${n} поле`;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${n} поля`;
+  return `${n} полей`;
+}
+
+const orderDialog = document.getElementById('order-dialog');
+
+document.querySelectorAll('form[data-validate]').forEach((form) => {
+  const summary = form.querySelector('.form-summary');
+  const fields = Array.from(form.elements).filter((el) => el.willValidate && el.id);
+  let submitted = false;
+
+  fields.forEach((field) => {
+    const eventName = field.type === 'checkbox' || field.tagName === 'SELECT' ? 'change' : 'input';
+    field.addEventListener(eventName, () => {
+      if (submitted || field.getAttribute('aria-invalid') === 'true') validateField(field);
+    });
+    field.addEventListener('blur', () => {
+      if (submitted && field.value) validateField(field);
+    });
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    submitted = true;
+
+    const invalid = fields.filter((field) => !validateField(field));
+
+    if (invalid.length) {
+      if (summary) {
+        summary.textContent = `Проверьте ${pluralErrors(invalid.length)}: исправьте ошибки, отмеченные красным.`;
+        summary.hidden = false;
       }
+      invalid[0].focus();
+      return;
+    }
+
+    if (summary) summary.hidden = true;
+    const data = new FormData(form);
+    const product = data.get('product');
+
+    if (form.dataset.success === 'dialog') {
+      orderDialog?.close();
+      showToast(product ? `Заявка на «${product}» принята. Перезвоним в течение часа.` : 'Заявка принята. Перезвоним в течение часа.');
+    } else {
+      const success = form.nextElementSibling;
+      if (success && success.classList.contains('success-message')) {
+        success.hidden = false;
+        success.focus();
+        motionApi().pop?.(success);
+      }
+    }
+
+    form.reset();
+    submitted = false;
+    fields.forEach((field) => field.removeAttribute('aria-invalid'));
+    form.dispatchEvent(new Event('change'));
+  });
+});
+
+/* ---------- Модальное окно заявки ---------- */
+
+if (orderDialog) {
+  const productLabel = document.getElementById('order-dialog-product');
+  const productInput = document.getElementById('dialog-selected-product');
+  const dialogForm = document.getElementById('dialog-form');
+
+  document.querySelectorAll('button[data-product]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const name = button.dataset.product;
+      const price = button.dataset.price;
+      productInput.value = name;
+      productLabel.textContent = price ? `${name} — ${price}` : name;
+
+      dialogForm.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+      dialogForm.querySelectorAll('.form-error').forEach((el) => { el.hidden = true; });
+      dialogForm.querySelector('.form-summary').hidden = true;
+
+      orderDialog.showModal();
+      motionApi().openDialog?.(orderDialog);
+    });
+  });
+
+  orderDialog.querySelectorAll('[data-close-dialog]').forEach((button) => {
+    button.addEventListener('click', () => orderDialog.close());
+  });
+
+  // Закрытие по клику на затемнённый фон.
+  orderDialog.addEventListener('click', (event) => {
+    if (event.target === orderDialog) orderDialog.close();
+  });
+}
+
+/* ---------- Страница заявки: выбор товара и превью ---------- */
+
+const productSelect = document.getElementById('order-product');
+
+if (productSelect) {
+  const preview = document.getElementById('order-preview');
+  const previewImage = document.getElementById('order-preview-image');
+  const previewName = document.getElementById('order-preview-name');
+  const previewPrice = document.getElementById('order-preview-price');
+  const images = {
+    1: 'images/tovar1-320.jpg', 2: 'images/tovar2-320.jpg', 3: 'images/tovar3-320.jpg',
+    4: 'images/tovar4.svg', 5: 'images/tovar5.svg', 6: 'images/tovar6.svg',
+    7: 'images/tovar7.svg', 8: 'images/tovar8.svg', 9: 'images/tovar9.svg',
+  };
+
+  const updatePreview = () => {
+    const option = productSelect.selectedOptions[0];
+    if (!option || !option.value) {
+      preview.hidden = true;
+      return;
+    }
+    previewImage.src = images[option.dataset.id];
+    previewName.textContent = option.value;
+    previewPrice.textContent = option.dataset.price;
+    const wasHidden = preview.hidden;
+    preview.hidden = false;
+    if (wasHidden) motionApi().pop?.(preview);
+  };
+
+  const requested = new URLSearchParams(window.location.search).get('product');
+  if (requested) {
+    const option = productSelect.querySelector(`option[data-id="${CSS.escape(requested)}"]`);
+    if (option) productSelect.value = option.value;
+  }
+
+  productSelect.addEventListener('change', updatePreview);
+  productSelect.form.addEventListener('change', updatePreview);
+  updatePreview();
+}
+
+/* ---------- Каталог: фильтры, сортировка и счётчик ---------- */
+
+const filtersForm = document.getElementById('filters-form');
+const catalogGrid = document.getElementById('catalog-grid');
+
+if (filtersForm && catalogGrid) {
+  const cards = Array.from(catalogGrid.querySelectorAll('.product-card'));
+  const counter = document.getElementById('catalog-count');
+  const empty = document.getElementById('catalog-empty');
+  const toggle = document.querySelector('.catalog-filters__toggle');
+  const compactQuery = window.matchMedia('(max-width: 1023px)');
+
+  const word = (n) => {
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    if (mod10 === 1 && mod100 !== 11) return 'товар';
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'товара';
+    return 'товаров';
+  };
+
+  const applyFilters = () => {
+    const data = new FormData(filtersForm);
+    const categories = data.getAll('category');
+    const min = Number(data.get('price-from')) || 0;
+    const max = Number(data.get('price-to')) || Infinity;
+    const saleOnly = data.get('sale') === 'true';
+    const sort = data.get('sort');
+
+    const visible = cards.filter((card) => {
+      const price = Number(card.dataset.price);
+      const show = (categories.length === 0 || categories.includes(card.dataset.category))
+        && price >= min && price <= max
+        && (!saleOnly || card.dataset.sale === 'true');
+      card.hidden = !show;
+      return show;
     });
 
-    // Показываем стандартные сообщения браузера.
-    orderForm.reportValidity();
-    return;
+    const sorted = [...cards].sort((a, b) => {
+      if (sort === 'price-asc') return a.dataset.price - b.dataset.price;
+      if (sort === 'price-desc') return b.dataset.price - a.dataset.price;
+      if (sort === 'name') {
+        return a.querySelector('.product-card__title').textContent
+          .localeCompare(b.querySelector('.product-card__title').textContent, 'ru');
+      }
+      return a.dataset.index - b.dataset.index;
+    });
+    sorted.forEach((card) => catalogGrid.append(card));
+
+    counter.textContent = `Найдено: ${visible.length} ${word(visible.length)}`;
+    empty.hidden = visible.length > 0;
+    motionApi().animateCards?.(visible);
+  };
+
+  filtersForm.addEventListener('input', applyFilters);
+  filtersForm.addEventListener('change', applyFilters);
+  filtersForm.addEventListener('submit', (event) => event.preventDefault());
+  filtersForm.addEventListener('reset', () => setTimeout(applyFilters));
+
+  document.querySelectorAll('[data-reset-filters]').forEach((button) => {
+    button.addEventListener('click', () => {
+      filtersForm.reset();
+      filtersForm.querySelector('input')?.focus();
+    });
+  });
+
+  // На телефоне и планшете фильтры можно свернуть.
+  const setFiltersOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Скрыть' : 'Показать';
+    filtersForm.hidden = !open;
+  };
+
+  if (toggle) {
+    setFiltersOpen(!compactQuery.matches);
+    toggle.addEventListener('click', () => {
+      setFiltersOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    compactQuery.addEventListener('change', (event) => setFiltersOpen(!event.matches));
   }
+}
 
-  // Показываем сообщение об успешной отправке.
-  successMessage.hidden = false;
+/* ---------- Страница товаров: активный пункт в списке ---------- */
 
-  // Очищаем форму.
-  orderForm.reset();
+const chipLinks = document.querySelectorAll('.chips__link');
 
-  // Закрываем модальное окно.
-  if (orderDialog) {
-    orderDialog.close();
+if (chipLinks.length && 'IntersectionObserver' in window) {
+  const byId = new Map([...chipLinks].map((link) => [link.hash.slice(1), link]));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      chipLinks.forEach((link) => {
+        link.classList.remove('chips__link--active');
+        link.removeAttribute('aria-current');
+      });
+      const active = byId.get(entry.target.id);
+      if (active) {
+        active.classList.add('chips__link--active');
+        active.setAttribute('aria-current', 'true');
+        const list = active.closest('.chips__list');
+        list.scrollTo({
+          left: active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2,
+          behavior: 'smooth',
+        });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+
+  byId.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+}
+
+/* ---------- Подписка в подвале ---------- */
+
+const subscribeForm = document.getElementById('subscribe-form');
+
+if (subscribeForm) {
+  const input = document.getElementById('subscribe-email');
+  const status = document.getElementById('subscribe-status');
+
+  subscribeForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!input.checkValidity()) {
+      input.setAttribute('aria-invalid', 'true');
+      status.classList.add('subscribe__status--error');
+      status.textContent = input.validity.valueMissing
+        ? 'Введите e-mail, чтобы подписаться.'
+        : 'Проверьте e-mail: нужен формат name@example.com.';
+      input.focus();
+      return;
+    }
+    input.removeAttribute('aria-invalid');
+    status.classList.remove('subscribe__status--error');
+    status.textContent = 'Готово! Первое письмо придёт в понедельник.';
+    subscribeForm.reset();
+  });
+}
+
+/* ---------- Переход по якорю после загрузки шрифтов ---------- */
+
+// Плавная прокрутка к якорю может прерваться, когда подгружаются шрифты
+// и меняется высота блоков. Доводим страницу до нужного раздела ещё раз.
+if (window.location.hash.length > 1) {
+  const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+  if (target) {
+    const jump = () => {
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      document.documentElement.classList.remove('is-anchor-load');
+    };
+    window.addEventListener('load', () => {
+      const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+      fontsReady.then(() => requestAnimationFrame(jump));
+    }, { once: true });
   }
-});
+}
