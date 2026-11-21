@@ -64,6 +64,18 @@ body {
   }
 }
 
+/* Чат на телефоне занимает всю ширину экрана */
+@media (max-width: 479px) {
+  .chat__panel {
+    position: fixed;
+    right: 8px;
+    left: 8px;
+    bottom: 84px;
+    width: auto;
+    height: min(560px, calc(100dvh - 100px));
+  }
+}
+
 /* ---------- Крупные телефоны: от 480px ---------- */
 
 @media (min-width: 480px) {
@@ -83,6 +95,26 @@ body {
   .features,
   .contact-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .account-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .order-item {
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+  }
+
+  .order-item__image {
+    width: 72px;
+    height: 72px;
+  }
+
+  .order-item__side {
+    grid-row: 1 / span 3;
+    grid-column: 3;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .order-dialog__header {
@@ -112,6 +144,12 @@ body {
     align-items: center;
     gap: var(--space-md);
     flex-basis: auto;
+    order: 1;
+    margin-left: auto;
+  }
+
+  .site-header__actions {
+    margin-left: var(--space-sm);
   }
 
   .site-header__inner {
@@ -135,9 +173,14 @@ body {
     display: none;
   }
 
+  .chat {
+    right: 24px;
+    bottom: 24px;
+  }
+
   .back-to-top {
-    right: 32px;
-    bottom: 32px;
+    right: 30px;
+    bottom: 100px;
   }
 
   /* Форма: две колонки, широкие поля на всю строку */
@@ -209,6 +252,10 @@ body {
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   }
 
+  .account-auth {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+
   .map {
     height: 100%;
     min-height: 480px;
@@ -255,11 +302,16 @@ body {
     display: grid;
   }
 
-  .site-nav__phone {
-    display: inline-flex;
-    margin: 0;
-    padding: 0 0 0 var(--space-md);
-    border-left: 1px solid var(--color-border);
+  .header-action__text {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .header-action:not(.theme-toggle) {
+    padding: 0 16px 0 12px;
   }
 
   .site-footer__top {

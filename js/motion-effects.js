@@ -89,7 +89,7 @@
     });
   }
 
-  press('.button, .socials__link, .back-to-top, .site-header__toggle', (el) => {
+  press('.button, .socials__link, .back-to-top, .site-header__toggle, .header-action, .chat__launcher, .chat__send, .chat__chip, .tabs__tab', (el) => {
     animate(el, { scale: 0.95 }, { type: 'spring', stiffness: 600, damping: 30 });
     return () => animate(el, { scale: 1 }, { type: 'spring', stiffness: 500, damping: 22 });
   });
@@ -113,6 +113,26 @@
     animate(cards, { opacity: [0, 1], scale: [0.96, 1] },
       { duration: 0.35, ease, delay: stagger(0.035) });
   };
+
+  api.heart = (el) => {
+    animate(el, { scale: [1, 1.35, 1] }, { duration: 0.45, ease });
+  };
+
+  api.chatOpen = (panel) => {
+    animate(panel, { opacity: [0, 1], scale: [0.88, 1], y: [20, 0] },
+      { type: 'spring', bounce: 0.22, visualDuration: 0.4 });
+  };
+
+  api.message = (el) => {
+    animate(el, { opacity: [0, 1], y: [12, 0], scale: [0.96, 1] }, { duration: 0.32, ease });
+  };
+
+  /* Кнопка чата мягко появляется после загрузки */
+  const launcher = document.querySelector('.chat__launcher');
+  if (launcher) {
+    animate(launcher, { opacity: [0, 1], scale: [0.5, 1] },
+      { type: 'spring', bounce: 0.4, visualDuration: 0.5, delay: 1 });
+  }
 
   api.pop = (el) => {
     animate(el, { opacity: [0, 1], scale: [0.95, 1] }, { type: 'spring', bounce: 0.3, visualDuration: 0.4 });
