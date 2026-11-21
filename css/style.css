@@ -934,17 +934,17 @@ body {
 .feature__icon {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: 78px;
+  height: 78px;
   margin-bottom: var(--space-sm);
   color: var(--color-primary);
   background-color: var(--color-primary-soft);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 
 .feature__icon .icon {
-  width: 26px;
-  height: 26px;
+  width: 39px;
+  height: 39px;
 }
 
 .feature__title {
@@ -1944,12 +1944,17 @@ body {
 .contact-card__icon {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   margin-bottom: var(--space-sm);
   color: var(--color-accent);
   background-color: var(--color-ink);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+}
+
+.contact-card__icon .icon {
+  width: 30px;
+  height: 30px;
 }
 
 .contact-card__title {
@@ -2319,44 +2324,12 @@ a.contact-card__value:hover {
   transform: translateY(-3px);
 }
 
-.site-footer__top-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  min-height: 44px;
-  font-weight: 700;
-  color: var(--color-on-ink);
-  text-decoration: none;
-}
-
-.site-footer__top-link:hover {
-  color: var(--color-accent);
-}
-
-.site-footer__wordmark {
-  margin: 0;
-  padding-inline: 2vw;
-  font-family: var(--font-display);
-  font-size: clamp(72px, 23vw, 340px);
-  font-weight: 700;
-  line-height: 0.78;
-  letter-spacing: -0.06em;
-  text-align: center;
-  white-space: nowrap;
-  color: transparent;
-  background-image: linear-gradient(180deg, rgb(200 240 60 / 0.9) 0%, rgb(200 240 60 / 0.25) 55%, rgb(200 240 60 / 0) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  user-select: none;
-  transform: translateY(8%);
-}
-
 /* Кнопка «Наверх» (UP) с кольцом прогресса прокрутки */
 
 .back-to-top {
   position: fixed;
-  right: 16px;
-  bottom: 88px;
+  right: 22px;
+  bottom: 22px;
   z-index: 90;
   display: flex;
   flex-direction: column;
@@ -2595,7 +2568,7 @@ html.theme-switching::view-transition-new(root) {
 
 .chat {
   position: fixed;
-  right: 16px;
+  left: 16px;
   bottom: 16px;
   z-index: 95;
 }
@@ -2662,7 +2635,7 @@ html.theme-switching::view-transition-new(root) {
 
 .chat__panel {
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 76px;
   display: flex;
   flex-direction: column;
@@ -2673,7 +2646,7 @@ html.theme-switching::view-transition-new(root) {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  transform-origin: 100% 100%;
+  transform-origin: 0 100%;
 }
 
 .chat__panel[hidden] {
