@@ -6,7 +6,7 @@
 - `catalog.html`
 - `order.html`
 
-Дополнительно проверены `product.html`, `contacts.html` и `account.html`.
+Дополнительно проверены `about.html`, `contacts.html` и `account.html`.
 
 ## Автоматическая проверка разметки (все 6 страниц, светлая и тёмная тема)
 

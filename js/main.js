@@ -141,11 +141,16 @@ if (navToggle && siteNav) {
 }
 
 const backToTop = document.querySelector('.back-to-top');
+const backToTopRing = document.querySelector('.back-to-top__progress');
 
 function onScroll() {
   const y = window.scrollY;
   if (header) header.classList.toggle('site-header--scrolled', y > 8);
   if (backToTop) backToTop.classList.toggle('back-to-top--visible', y > 700);
+  if (backToTopRing) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    backToTopRing.style.strokeDashoffset = String(1 - (max > 0 ? Math.min(y / max, 1) : 0));
+  }
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -467,36 +472,73 @@ if (filtersForm && catalogGrid) {
   }
 }
 
-/* ---------- Страница товаров: активный пункт в списке ---------- */
+/* ---------- Каталог: карточка раскрывается по нажатию ---------- */
 
-const chipLinks = document.querySelectorAll('.chips__link');
+const expandableCards = [...document.querySelectorAll('.product-card--expandable')];
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if (chipLinks.length && 'IntersectionObserver' in window) {
-  const byId = new Map([...chipLinks].map((link) => [link.hash.slice(1), link]));
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      chipLinks.forEach((link) => {
-        link.classList.remove('chips__link--active');
-        link.removeAttribute('aria-current');
-      });
-      const active = byId.get(entry.target.id);
-      if (active) {
-        active.classList.add('chips__link--active');
-        active.setAttribute('aria-current', 'true');
-        const list = active.closest('.chips__list');
-        list.scrollTo({
-          left: active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2,
-          behavior: 'smooth',
-        });
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
+function setCardOpen(card, open, { animate = true, scroll = true } = {}) {
+  const toggle = card.querySelector('.product-card__toggle');
+  const panel = card.querySelector('.product-card__details');
+  if (!toggle || !panel || open === (toggle.getAttribute('aria-expanded') === 'true')) return;
 
-  byId.forEach((_, id) => {
-    const section = document.getElementById(id);
-    if (section) observer.observe(section);
+  toggle.setAttribute('aria-expanded', String(open));
+
+  if (open) {
+    card.classList.add('product-card--open');
+    panel.hidden = false;
+    if (animate) motionApi().expand?.(panel);
+    if (scroll) {
+      requestAnimationFrame(() => card.scrollIntoView({
+        behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+        block: 'start',
+      }));
+    }
+    window.history.replaceState(null, '', `#${card.id}`);
+    return;
+  }
+
+  const finish = () => {
+    panel.hidden = true;
+    card.classList.remove('product-card--open');
+    // После сворачивания карточка возвращается в сетку — показываем её, если она ушла за экран.
+    const top = card.getBoundingClientRect().top;
+    const headerHeight = header ? header.offsetHeight : 0;
+    if (scroll && (top < headerHeight || top > window.innerHeight - 120)) {
+      card.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+    }
+  };
+  const collapse = animate ? motionApi().collapse?.(panel) : null;
+  if (collapse) collapse.then(finish);
+  else finish();
+  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+
+expandableCards.forEach((card) => {
+  const toggle = card.querySelector('.product-card__toggle');
+  toggle.addEventListener('click', () => {
+    const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+    if (willOpen) {
+      expandableCards.filter((other) => other !== card)
+        .forEach((other) => setCardOpen(other, false, { animate: false }));
+    }
+    setCardOpen(card, willOpen);
   });
+});
+
+// Ссылка вида catalog.html#product-3 сразу открывает нужную карточку.
+function openCardFromHash(options) {
+  if (!window.location.hash.startsWith('#product-')) return;
+  const target = document.getElementById(window.location.hash.slice(1));
+  if (!target || !target.classList.contains('product-card--expandable')) return;
+  expandableCards.filter((other) => other !== target)
+    .forEach((other) => setCardOpen(other, false, { animate: false }));
+  setCardOpen(target, true, options);
+}
+
+if (expandableCards.length) {
+  openCardFromHash({ animate: false, scroll: false });
+  window.addEventListener('hashchange', () => openCardFromHash({ animate: true, scroll: true }));
 }
 
 /* ---------- Подписка в подвале ---------- */
@@ -532,8 +574,15 @@ if (subscribeForm) {
 if (window.location.hash.length > 1) {
   const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (target) {
+    // offsetTop не учитывает анимационные сдвиги (transform), поэтому позиция точная.
+    const pageTop = (el) => {
+      let top = 0;
+      for (let node = el; node; node = node.offsetParent) top += node.offsetTop;
+      return top;
+    };
     const jump = () => {
-      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      const headerHeight = header ? header.offsetHeight : 0;
+      window.scrollTo({ top: pageTop(target) - headerHeight - 16, behavior: 'instant' });
       document.documentElement.classList.remove('is-anchor-load');
     };
     window.addEventListener('load', () => {
