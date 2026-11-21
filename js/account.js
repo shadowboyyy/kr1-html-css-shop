@@ -1,4 +1,4 @@
-// Личный кабинет: вход, заявки, избранное, бонусы и профиль.
+// Личный кабинет: вход, заказы, избранное, бонусы и профиль.
 // Данные хранятся в localStorage этого браузера.
 (() => {
   const store = window.voltStore;
@@ -51,7 +51,7 @@
       const item = el('li', 'order-item');
       item.append(productImage(product, 'order-item__image'));
       item.append(el('p', 'order-item__name', order.product));
-      item.append(el('p', 'order-item__meta', `${TOPICS[order.topic] || 'Заявка'} · ${formatDate(order.date)}`));
+      item.append(el('p', 'order-item__meta', `${TOPICS[order.topic] || 'Заказ'} · ${formatDate(order.date)}`));
 
       const side = el('div', 'order-item__side');
       if (product) side.append(el('span', 'order-item__price', product.priceText));

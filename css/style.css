@@ -1801,7 +1801,7 @@ body {
   color: var(--color-success);
 }
 
-/* Боковая колонка заявки */
+/* Боковая колонка оформления заказа */
 
 .order-aside {
   display: grid;
