@@ -114,6 +114,23 @@
       { duration: 0.35, ease, delay: stagger(0.035) });
   };
 
+  api.expand = (panel) => {
+    const height = panel.scrollHeight;
+    animate(panel, { height: [0, height], opacity: [0, 1] }, { duration: 0.45, ease })
+      .then(() => { panel.style.height = ''; });
+    animate([...panel.querySelector('.product-card__details-inner').children], { opacity: [0, 1], y: [12, 0] },
+      { duration: 0.4, ease, delay: stagger(0.05, { startDelay: 0.1 }) });
+  };
+
+  api.collapse = (panel) => new Promise((resolve) => {
+    animate(panel, { height: [panel.offsetHeight, 0], opacity: [1, 0] }, { duration: 0.3, ease })
+      .then(() => {
+        panel.style.height = '';
+        panel.style.opacity = '';
+        resolve();
+      });
+  });
+
   api.heart = (el) => {
     animate(el, { scale: [1, 1.35, 1] }, { duration: 0.45, ease });
   };

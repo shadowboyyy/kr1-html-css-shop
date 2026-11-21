@@ -179,7 +179,7 @@ body {
   }
 
   .back-to-top {
-    right: 30px;
+    right: 24px;
     bottom: 100px;
   }
 
@@ -207,13 +207,38 @@ body {
     grid-column: 1 / -1;
   }
 
-  .product-details__layout {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  /* Раскрытая карточка каталога: фото слева, описание справа */
+  .product-card--open {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto auto 1fr;
   }
 
-  .product-details__media {
+  .product-card--open .product-card__media {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-items: start;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .product-card--open .product-card__image {
     position: sticky;
-    top: calc(var(--header-height) + 80px);
+    top: calc(var(--header-height) + 32px);
+  }
+
+  .product-card--open .product-card__body,
+  .product-card--open .product-card__footer,
+  .product-card--open .product-card__details {
+    grid-column: 2;
+  }
+
+  .product-card--open .product-card__footer {
+    padding-bottom: var(--space-md);
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -256,6 +281,10 @@ body {
     grid-template-columns: minmax(0, 1fr) 360px;
   }
 
+  .about-story {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
   .map {
     height: 100%;
     min-height: 480px;
@@ -275,7 +304,8 @@ body {
   }
 
   .features,
-  .contact-cards {
+  .contact-cards,
+  .timeline {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
