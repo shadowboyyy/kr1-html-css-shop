@@ -73,7 +73,7 @@
 
       const name = el('p', 'fav-card__name');
       const link = el('a', '', product.name);
-      link.href = `catalog.html#product-${product.id}`;
+      link.href = `product.html?id=${product.id}`;
       name.append(link);
       card.append(name);
       card.append(el('p', 'fav-card__price', product.priceText));

@@ -76,6 +76,60 @@ body {
   }
 }
 
+/* Таблица характеристик на телефоне — карточное представление:
+   каждая строка становится карточкой «параметр — значение», без прокрутки вбок */
+@media (max-width: 639px) {
+  .product-table {
+    min-width: 0;
+  }
+
+  .product-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .product-table,
+  .product-table tbody,
+  .product-table tr,
+  .product-table th,
+  .product-table td {
+    display: block;
+  }
+
+  .product-table tbody tr {
+    display: grid;
+    gap: 2px;
+    padding: 12px var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-table tbody th,
+  .product-table tbody td {
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .product-table tbody th {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .product-table tbody td {
+    font-weight: 600;
+  }
+
+  .product-table__caption {
+    display: block;
+  }
+}
+
 /* ---------- Крупные телефоны: от 480px ---------- */
 
 @media (min-width: 480px) {
@@ -283,6 +337,20 @@ body {
 
   .about-story {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .product-page__card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  .product-page__media {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .map {

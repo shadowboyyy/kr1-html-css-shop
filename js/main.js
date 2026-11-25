@@ -573,6 +573,7 @@ if (subscribeForm) {
 // и меняется высота блоков. Доводим страницу до нужного раздела ещё раз.
 if (window.location.hash.length > 1) {
   const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+  if (!target) document.documentElement.classList.remove('is-anchor-load');
   if (target) {
     // offsetTop не учитывает анимационные сдвиги (transform), поэтому позиция точная.
     const pageTop = (el) => {
